@@ -1,0 +1,2 @@
+run:
+	npx expo start

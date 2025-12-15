@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  background-color: #0B0F19;
+  /* Starlight Theme Background */
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Header / Title Overlay */
+#header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  pointer-events: none;
+  /* Let clicks pass through */
+}
+
+#header h1 {
+  color: #fff;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.5px;
+}
+
+#header p {
+  color: #ccc;
+  margin: 5px 0 0 0;
+  font-size: 14px;
+}
+
+/* Floor Controls - Floating Dock Style */
+#floor-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  /* Moved to left to align with header, or keep left */
+  top: 100px;
+  /* Below header */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(30, 30, 30, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#floor-controls button {
+  background: transparent;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-align: left;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#floor-controls button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#floor-controls button.active {
+  background: #4CAF50;
+  /* Brand color */
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* MapLibre Controls Customization */
+.maplibregl-ctrl-group {
+  background: rgba(30, 30, 30, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.maplibregl-ctrl-group button {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.maplibregl-ctrl-group button:last-child {
+  border-bottom: none;
+}
+
+.maplibregl-ctrl-icon {
+  filter: invert(1);
+  /* Make icons white */
+}
+
+/* Search Container */
+#search-container {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  z-index: 10;
+  width: 320px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.search-input-wrapper:focus-within {
+  border-color: #4285F4;
+  box-shadow: 0 4px 20px rgba(66, 133, 244, 0.3);
+}
+
+.search-icon {
+  color: #888;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+#location-search {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+}
+
+#location-search::placeholder {
+  color: #666;
+}
+
+.search-clear {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.search-clear:hover {
+  color: #fff;
+}
+
+/* Search Results */
+.search-results {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.search-result-item.no-results {
+  color: #888;
+  cursor: default;
+}
+
+.search-result-item.no-results:hover {
+  background: transparent;
+}
+
+.result-icon {
+  color: #4285F4;
+  flex-shrink: 0;
+}
+
+.result-name {
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Route Markers */
+.route-marker {
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+.route-marker:active {
+  cursor: grabbing;
+}
+
+.route-marker:hover {
+  transform: scale(1.1);
+}
+
+/* Person Marker (Orange draggable person) */
+.route-marker-person {
+  position: relative;
+  cursor: grab;
+}
+
+.route-marker-person:active {
+  cursor: grabbing;
+}
+
+.route-marker-person:hover {
+  transform: scale(1.05);
+}
+
+.person-marker-label {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FF6B35;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.person-marker-animate {
+  animation: personPulse 2s ease-in-out infinite;
+}
+
+@keyframes personPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Routing Panel */
+#routing-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  min-width: 300px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+#routing-panel.active {
+  display: block;
+}
+
+.routing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.routing-title {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.routing-close {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 24px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.routing-close:hover {
+  color: #fff;
+}
+
+.routing-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.routing-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.routing-label {
+  color: #888;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.routing-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.routing-input:focus {
+  border-color: #4285F4;
+  background: rgba(66, 133, 244, 0.1);
+}
+
+.routing-input::placeholder {
+  color: #666;
+}
+
+.routing-mode {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.routing-mode-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px;
+  color: #888;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.routing-mode-btn.active {
+  background: rgba(66, 133, 244, 0.2);
+  border-color: #4285F4;
+  color: #4285F4;
+}
+
+.routing-mode-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.routing-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.routing-btn {
+  flex: 1;
+  background: #4285F4;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.routing-btn:hover {
+  background: #357ae8;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.routing-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.routing-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.routing-info {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.routing-distance {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.routing-distance span {
+  font-weight: 600;
+  color: #4285F4;
+}
+
+.routing-floors {
+  color: #888;
+  font-size: 12px;
+}

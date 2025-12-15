@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1760189956368,
+    "longitude": 33.630945,
+    "latitude": 28.24912,
+    "altitude": 38.1,
+    "accuracy": 4.9,
+    "timestamp": "2025-10-11T13:39:16.368Z",
+    "label": "Building A - Main Entrance"
+  },
+  {
+    "id": 1760189956369,
+    "longitude": 33.631200,
+    "latitude": 28.249500,
+    "altitude": 38.5,
+    "accuracy": 5.2,
+    "timestamp": "2025-10-11T13:40:22.456Z",
+    "label": "Library - 2nd Floor"
+  },
+  {
+    "id": 1760189956370,
+    "longitude": 33.630750,
+    "latitude": 28.249900,
+    "altitude": 37.8,
+    "accuracy": 4.8,
+    "timestamp": "2025-10-11T13:41:35.789Z",
+    "label": "Cafeteria - Ground Floor"
+  },
+  {
+    "id": 1760189956371,
+    "longitude": 33.631500,
+    "latitude": 28.249200,
+    "altitude": 39.0,
+    "accuracy": 5.5,
+    "timestamp": "2025-10-11T13:42:48.123Z",
+    "label": "Computer Lab - Room 205"
+  },
+  {
+    "id": 1760189956372,
+    "longitude": 33.630500,
+    "latitude": 28.249300,
+    "altitude": 38.2,
+    "accuracy": 4.7,
+    "timestamp": "2025-10-11T13:43:55.456Z",
+    "label": "Admin Office - 1st Floor"
+  }
+]
