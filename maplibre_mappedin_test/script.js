@@ -71,21 +71,23 @@ async function initApp() {
     layerManager.addDoors(geometry, entranceIds, entranceGeometryToFloorMap);
     layerManager.addLabels(locations, geometry);
 
-    // 6. Load and Render Nodes
+    // 6. Load Nodes (Data only, for pathfinding)
     const nodeFeatures = await loadNodes(floors);
-    layerManager.addNodes(nodeFeatures);
+    // layerManager.addNodes(nodeFeatures); // Visuals removed
 
-    // 6b. Render Debug Nodes (Walkable, Nonwalkable, Kinds, Entrance Aesthetic, Annotations, Locations, Geometry)
+    // 6b. Debug Nodes removed per user request
+    /*
     const debugCategories = {
-      'walkable': { ids: mvfData.walkableIds, color: '#00FF00' }, // Green
-      'nonwalkable': { ids: mvfData.nonwalkableIds, color: '#FFA500' }, // Orange
-      'kinds': { ids: mvfData.kindsIds, color: '#0000FF' }, // Blue
-      'entrance-aesthetic': { ids: mvfData.entranceAestheticIds, color: '#800080' }, // Purple
-      'annotations': { ids: mvfData.annotationsIds, color: '#00FFFF' }, // Cyan
-      'locations': { ids: mvfData.locationsIds, color: '#FFFF00' }, // Yellow
-      'geometry': { ids: mvfData.geometryIds, color: '#808080' } // Gray (Catch-all)
+      'walkable': { ids: mvfData.walkableIds, color: '#00FF00' },
+      'nonwalkable': { ids: mvfData.nonwalkableIds, color: '#FFA500' },
+      'kinds': { ids: mvfData.kindsIds, color: '#0000FF' },
+      'entrance-aesthetic': { ids: mvfData.entranceAestheticIds, color: '#800080' },
+      'annotations': { ids: mvfData.annotationsIds, color: '#00FFFF' },
+      'locations': { ids: mvfData.locationsIds, color: '#FFFF00' },
+      'geometry': { ids: mvfData.geometryIds, color: '#808080' }
     };
     layerManager.addDebugNodes(debugCategories, geometry);
+    */
 
     // 7. Setup Pathfinding
     const pathfinder = new Pathfinder();

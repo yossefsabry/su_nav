@@ -303,29 +303,8 @@ export class LayerManager {
     }
 
     addNodes(nodeFeatures) {
-        if (nodeFeatures.length > 0) {
-            this.map.addSource('nodes-source', {
-                type: 'geojson',
-                data: {
-                    type: 'FeatureCollection',
-                    features: nodeFeatures
-                }
-            });
-
-            this.map.addLayer({
-                id: 'nodes-layer',
-                type: 'circle',
-                source: 'nodes-source',
-                minzoom: this.MIN_ZOOM_INDOOR,
-                paint: {
-                    'circle-radius': 3,
-                    'circle-color': '#ff0000',
-                    'circle-stroke-width': 1,
-                    'circle-stroke-color': '#ffffff'
-                }
-            });
-            this.mvfLayerIds.add('nodes-layer');
-        }
+        // Nodes are for pathfinding logic only, not visualization.
+        // Visual debugging removed as per user request.
     }
 
     addDebugNodes(categories, geometry) {
