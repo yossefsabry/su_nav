@@ -4,9 +4,11 @@ import { starlightTheme } from './theme.js';
 import { loadMVFBundle, loadNodes } from './src/mvf-loader.js';
 import { LayerManager } from './src/layer-manager.js';
 import { UIManager } from './src/ui-manager.js';
+import { LegendToggleManager } from './src/legend-toggle-manager.js';
 
 import { Pathfinder } from './src/pathfinder.js';
 import { InteractionManager } from './src/interaction-manager.js';
+
 
 async function initApp() {
   // 1. Load Data
@@ -88,7 +90,48 @@ async function initApp() {
       console.error('Error loading wall nodes:', e);
     }
 
+    // 6c. Load and display Stairs Nodes
+    try {
+      const response = await fetch('/assets/stairs_nodes.geojson');
+      if (response.ok) {
+        const stairsNodesData = await response.json();
+        layerManager.addStairsNodes(stairsNodesData);
+      } else {
+        console.warn('Failed to load stairs_nodes.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading stairs nodes:', e);
+    }
+
+    // 6d. Load and display Elevator Nodes
+    try {
+      const response = await fetch('/assets/elevator_nodes.geojson');
+      if (response.ok) {
+        const elevatorNodesData = await response.json();
+        layerManager.addElevatorNodes(elevatorNodesData);
+      } else {
+        console.warn('Failed to load elevator_nodes.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading elevator nodes:', e);
+    }
+
+    // 6e. Load and display Annotation Nodes (Entrances with SVG icons)
+    try {
+      const response = await fetch('/assets/annotation_nodes.geojson');
+      if (response.ok) {
+        const annotationNodesData = await response.json();
+        await layerManager.addAnnotationNodes(annotationNodesData);
+      } else {
+        console.warn('Failed to load annotation_nodes.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading annotation nodes:', e);
+    }
+
+
     // 6b. Debug Nodes removed per user request
+
     /*
     const debugCategories = {
       'walkable': { ids: mvfData.walkableIds, color: '#00FF00' },
@@ -113,6 +156,10 @@ async function initApp() {
     // 9. Setup UI
     const uiManager = new UIManager(map, layerManager, floors);
     uiManager.init();
+
+    // 10. Setup Legend Toggle (with localStorage persistence)
+    const legendToggleManager = new LegendToggleManager(layerManager);
+    legendToggleManager.init();
   });
 }
 

@@ -15,6 +15,88 @@
     </div>
     <div id="floor-controls"></div>
     <div id="map"></div>
+    <div id="developer-legend">
+        <div class="legend-header">
+            <h3>Developer Legend</h3>
+            <p>Node Types Reference</p>
+        </div>
+        <div class="legend-items">
+            <div class="legend-item toggleable active" data-layer="wall-nodes-layer">
+                <div class="legend-checkbox">✓</div>
+                <div class="legend-color" style="background-color: #FF0000;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Wall Nodes</div>
+                    <div class="legend-desc">Marks wall and obstacle locations</div>
+                </div>
+            </div>
+            <div class="legend-item toggleable active" data-layer="stairs-nodes-layer">
+                <div class="legend-checkbox">✓</div>
+                <div class="legend-color" style="background-color: #FF00FF;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Stairs Nodes 🪜</div>
+                    <div class="legend-desc">Staircase connection points</div>
+                </div>
+            </div>
+            <div class="legend-item toggleable active" data-layer="elevator-nodes-layer">
+                <div class="legend-checkbox">✓</div>
+                <div class="legend-color" style="background-color: #00FFFF;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Elevator Nodes 🛗</div>
+                    <div class="legend-desc">Elevator connection points</div>
+                </div>
+            </div>
+            <div class="legend-item toggleable active" data-layer="annotation-nodes-layer">
+                <div class="legend-checkbox">✓</div>
+                <div class="legend-color" style="background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Entrance Markers 🚪</div>
+                    <div class="legend-desc">Primary & secondary entrances</div>
+                </div>
+            </div>
+            <div class="legend-item disabled">
+                <div class="legend-color" style="background-color: #00FF00;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Walkable Nodes</div>
+                    <div class="legend-desc">Pathfinding nodes (not visible)</div>
+                </div>
+            </div>
+            <div class="legend-item disabled">
+                <div class="legend-color" style="background-color: #FFA500;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Non-walkable Nodes</div>
+                    <div class="legend-desc">Blocked areas (commented out)</div>
+                </div>
+            </div>
+            <div class="legend-item disabled">
+                <div class="legend-color" style="background-color: #0000FF;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Kinds Nodes</div>
+                    <div class="legend-desc">Type classifications (commented out)</div>
+                </div>
+            </div>
+            <div class="legend-item disabled">
+                <div class="legend-color" style="background-color: #800080;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Entrance Nodes</div>
+                    <div class="legend-desc">Entry points (commented out)</div>
+                </div>
+            </div>
+            <div class="legend-item disabled">
+                <div class="legend-color" style="background-color: #00FFFF;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Annotation Nodes</div>
+                    <div class="legend-desc">Markers (commented out)</div>
+                </div>
+            </div>
+            <div class="legend-item disabled">
+                <div class="legend-color" style="background-color: #FFFF00;"></div>
+                <div class="legend-info">
+                    <div class="legend-name">Location Nodes</div>
+                    <div class="legend-desc">Places (commented out)</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="module" src="/script.js"></script>
 </body>
 

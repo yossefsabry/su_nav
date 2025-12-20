@@ -464,4 +464,248 @@ export class LayerManager {
             });
         }
     }
+
+    addStairsNodes(geojsonData) {
+        const sourceId = 'stairs-nodes-source';
+        const layerId = 'stairs-nodes-layer';
+
+        if (this.map.getSource(sourceId)) {
+            this.map.getSource(sourceId).setData(geojsonData);
+        } else {
+            this.map.addSource(sourceId, {
+                type: 'geojson',
+                data: geojsonData
+            });
+
+            this.map.addLayer({
+                id: layerId,
+                type: 'circle',
+                source: sourceId,
+                minzoom: this.MIN_ZOOM_INDOOR,
+                paint: {
+                    'circle-radius': 5, // Slightly larger than wall nodes
+                    'circle-color': '#FF00FF', // Magenta/Purple for stairs
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff',
+                    'circle-opacity': 0.9
+                }
+            });
+            this.mvfLayerIds.add(layerId);
+
+            // Add click listener for popup
+            this.map.on('click', layerId, (e) => {
+                const feature = e.features[0];
+                const props = feature.properties;
+                const coordinates = feature.geometry.coordinates.slice();
+
+                new maplibregl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(`
+                        <strong>Type:</strong> Stairs 🪜<br>
+                        <strong>Geometry ID:</strong> ${props.geometryId}<br>
+                        <strong>Connection ID:</strong> ${props.connectionId}<br>
+                        <strong>Floor:</strong> ${props.floorId}
+                    `)
+                    .addTo(this.map);
+            });
+
+            // Change cursor on hover
+            this.map.on('mouseenter', layerId, () => {
+                this.map.getCanvas().style.cursor = 'pointer';
+            });
+            this.map.on('mouseleave', layerId, () => {
+                this.map.getCanvas().style.cursor = '';
+            });
+        }
+    }
+
+    addElevatorNodes(geojsonData) {
+        const sourceId = 'elevator-nodes-source';
+        const layerId = 'elevator-nodes-layer';
+
+        if (this.map.getSource(sourceId)) {
+            this.map.getSource(sourceId).setData(geojsonData);
+        } else {
+            this.map.addSource(sourceId, {
+                type: 'geojson',
+                data: geojsonData
+            });
+
+            this.map.addLayer({
+                id: layerId,
+                type: 'circle',
+                source: sourceId,
+                minzoom: this.MIN_ZOOM_INDOOR,
+                paint: {
+                    'circle-radius': 6, // Larger for elevators
+                    'circle-color': '#00FFFF', // Cyan for elevators
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#ffffff',
+                    'circle-opacity': 0.9
+                }
+            });
+            this.mvfLayerIds.add(layerId);
+
+            // Add click listener for popup
+            this.map.on('click', layerId, (e) => {
+                const feature = e.features[0];
+                const props = feature.properties;
+                const coordinates = feature.geometry.coordinates.slice();
+
+                new maplibregl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(`
+                        <strong>Type:</strong> Elevator 🛗<br>
+                        <strong>Geometry ID:</strong> ${props.geometryId}<br>
+                        <strong>Connection ID:</strong> ${props.connectionId}<br>
+                        <strong>Floor:</strong> ${props.floorId}
+                    `)
+                    .addTo(this.map);
+            });
+
+            // Change cursor on hover
+            this.map.on('mouseenter', layerId, () => {
+                this.map.getCanvas().style.cursor = 'pointer';
+            });
+            this.map.on('mouseleave', layerId, () => {
+                this.map.getCanvas().style.cursor = '';
+            });
+        }
+    }
+
+    async addAnnotationNodes(geojsonData) {
+        // Store markers for later removal/toggle
+        if (!this.annotationMarkers) {
+            this.annotationMarkers = [];
+        }
+
+        // Load SVG icons
+        const loadSVG = async (iconType) => {
+            const response = await fetch(`/assets/icons/${iconType}.svg`);
+            return await response.text();
+        };
+
+        // Process each annotation feature
+        for (const feature of geojsonData.features) {
+            const { coordinates } = feature.geometry;
+            const { iconType, entranceType, annotationId, floorId } = feature.properties;
+
+            // Load the appropriate SVG
+            const svgContent = await loadSVG(iconType);
+
+            // Create a DOM element for the marker
+            const el = document.createElement('div');
+            el.className = `annotation-marker ${iconType}`;
+            el.innerHTML = `<div class="annotation-icon">${svgContent}</div>`;
+            el.style.width = '24px';
+            el.style.height = '24px';
+
+            // Create MapLibre marker
+            const marker = new maplibregl.Marker({
+                element: el,
+                anchor: 'center'
+            })
+                .setLngLat(coordinates)
+                .setPopup(
+                    new maplibregl.Popup({ offset: 25 })
+                        .setHTML(`
+                            <strong>Type:</strong> ${entranceType}<br>
+                            <strong>Annotation ID:</strong> ${annotationId}<br>
+                            <strong>Floor:</strong> ${floorId}
+                        `)
+                )
+                .addTo(this.map);
+
+            // Store marker with metadata
+            this.annotationMarkers.push({
+                marker,
+                floorId,
+                layerId: 'annotation-nodes-layer'
+            });
+        }
+
+        // Add to mvfLayerIds for floor filtering
+        this.mvfLayerIds.add('annotation-nodes-layer');
+    }
+
+    // Override updateFloorVisibility to handle annotation markers
+    updateFloorVisibility(currentFloorId) {
+        this.currentFloorId = currentFloorId;
+
+        // Handle regular layers
+        this.mvfLayerIds.forEach(layerId => {
+            if (this.map.getLayer(layerId)) {
+                if (layerId === 'building-shell') return;
+                if (layerId === 'annotation-nodes-layer') return; // Skip, handled separately
+                this.map.setFilter(layerId, ['==', ['get', 'floorId'], currentFloorId]);
+            }
+        });
+
+        // Handle annotation markers
+        if (this.annotationMarkers) {
+            this.annotationMarkers.forEach(({ marker, floorId }) => {
+                if (floorId === currentFloorId) {
+                    marker.getElement().style.display = 'block';
+                } else {
+                    marker.getElement().style.display = 'none';
+                }
+            });
+        }
+    }
+
+    toggleLayerVisibility(layerId) {
+        // Handle annotation markers
+        if (layerId === 'annotation-nodes-layer' && this.annotationMarkers) {
+            const currentlyVisible = this.annotationMarkers[0]?.marker.getElement().style.display !== 'none';
+            const newVisibility = !currentlyVisible;
+
+            this.annotationMarkers.forEach(({ marker, floorId }) => {
+                if (floorId === this.currentFloorId) {
+                    marker.getElement().style.display = newVisibility ? 'block' : 'none';
+                }
+            });
+
+            return newVisibility;
+        }
+
+        // Handle regular layers
+        if (this.map.getLayer(layerId)) {
+            const currentVisibility = this.map.getLayoutProperty(layerId, 'visibility');
+            const newVisibility = currentVisibility === 'visible' ? 'none' : 'visible';
+            this.map.setLayoutProperty(layerId, 'visibility', newVisibility);
+            return newVisibility === 'visible';
+        }
+        return false;
+    }
+
+    setLayerVisibility(layerId, visible) {
+        // Handle annotation markers
+        if (layerId === 'annotation-nodes-layer' && this.annotationMarkers) {
+            this.annotationMarkers.forEach(({ marker, floorId }) => {
+                if (floorId === this.currentFloorId) {
+                    marker.getElement().style.display = visible ? 'block' : 'none';
+                }
+            });
+            return;
+        }
+
+        // Handle regular layers
+        if (this.map.getLayer(layerId)) {
+            this.map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none');
+        }
+    }
+
+    isLayerVisible(layerId) {
+        // Handle annotation markers
+        if (layerId === 'annotation-nodes-layer' && this.annotationMarkers && this.annotationMarkers.length > 0) {
+            return this.annotationMarkers[0].marker.getElement().style.display !== 'none';
+        }
+
+        // Handle regular layers
+        if (this.map.getLayer(layerId)) {
+            const visibility = this.map.getLayoutProperty(layerId, 'visibility');
+            return visibility === 'visible' || visibility === undefined;
+        }
+        return false;
+    }
 }
