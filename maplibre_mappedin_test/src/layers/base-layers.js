@@ -266,6 +266,31 @@ export const baseLayers = {
                 }
             });
             this.mvfLayerIds.add('labels');
+
+            // Add click handler for directions
+            this.map.on('click', 'labels', (e) => {
+                const feature = e.features[0];
+                const coords = feature.geometry.coordinates.slice();
+                const name = feature.properties.name;
+                const floorId = feature.properties.floorId;
+
+                // Dispatch event for DirectionsUI
+                window.dispatchEvent(new CustomEvent('location-clicked', {
+                    detail: {
+                        name: name,
+                        coords: coords,
+                        floorId: floorId
+                    }
+                }));
+            });
+
+            // Cursor on hover
+            this.map.on('mouseenter', 'labels', () => {
+                this.map.getCanvas().style.cursor = 'pointer';
+            });
+            this.map.on('mouseleave', 'labels', () => {
+                this.map.getCanvas().style.cursor = '';
+            });
         }
     },
 

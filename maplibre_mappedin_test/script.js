@@ -6,6 +6,12 @@ import { LayerManager } from './src/layer-manager.js';
 import { UIManager } from './src/ui-manager.js';
 import { LegendToggleManager } from './src/legend-toggle-manager.js';
 
+// Pathfinding System
+import { PathfindingEngine } from './src/pathfinding/PathfindingEngine.js';
+import { PathSmoother } from './src/pathfinding/features/PathSmoother.js';
+import { PathRenderer } from './src/pathfinding/visualization/PathRenderer.js';
+import { DirectionsUI } from './src/pathfinding/visualization/DirectionsUI.js';
+
 import { Pathfinder } from './src/pathfinder.js';
 import { InteractionManager } from './src/interaction-manager.js';
 
@@ -208,6 +214,92 @@ async function initApp() {
       }
     } catch (e) {
       console.error('Error loading location markers:', e);
+    }
+
+
+    // 7. Initialize Pathfinding System
+    console.log('🚀 Initializing Advanced Pathfinding System...');
+
+    const pathfindingEngine = new PathfindingEngine();
+    const pathSmoother = new PathSmoother();
+    const pathRenderer = new PathRenderer(map, layerManager);
+
+    try {
+      // Load walkable/nonwalkable data for collision detection
+      const walkableIds = new Set();
+      const nonwalkableIds = new Set();
+      const kindsData = {};
+
+      // Load walkable data
+      try {
+        const walkableResponse = await fetch('/assets/walkable_nodes.geojson');
+        if (walkableResponse.ok) {
+          const walkableData = await walkableResponse.json();
+          walkableData.features.forEach(f => {
+            if (f.properties.geometryIds) {
+              f.properties.geometryIds.forEach(id => walkableIds.add(id));
+            }
+          });
+        }
+      } catch (e) {
+        console.warn('Could not load walkable data:', e);
+      }
+
+      // Load nonwalkable data
+      try {
+        const nonwalkableResponse = await fetch('/assets/nonwalkable_nodes.geojson');
+        if (nonwalkableResponse.ok) {
+          const nonwalkableData = await nonwalkableResponse.json();
+          nonwalkableData.features.forEach(f => {
+            if (f.properties.geometryIds) {
+              f.properties.geometryIds.forEach(id => nonwalkableIds.add(id));
+            }
+          });
+        }
+      } catch (e) {
+        console.warn('Could not load nonwalkable data:', e);
+      }
+
+      // Load kinds data (walls)
+      try {
+        const kindsResponse = await fetch('/assets/kinds_nodes.geojson');
+        if (kindsResponse.ok) {
+          const kindsGeoData = await kindsResponse.json();
+          kindsGeoData.features.forEach(f => {
+            if (f.properties.kind && f.properties.geometryIds) {
+              f.properties.geometryIds.forEach(id => {
+                kindsData[id] = f.properties.kind;
+              });
+            }
+          });
+        }
+      } catch (e) {
+        console.warn('Could not load kinds data:', e);
+      }
+
+      // Initialize pathfinding engine
+      await pathfindingEngine.initialize(
+        nodeFeatures,
+        geometry,
+        connections,
+        walkableIds,
+        nonwalkableIds,
+        kindsData
+      );
+
+      console.log('✅ Pathfinding System Ready!');
+
+      // Initialize DirectionsUI
+      const directionsUI = new DirectionsUI(map, pathfindingEngine, pathRenderer);
+      directionsUI.initialize(floors[0].id); // Start with first floor
+
+      // Update current floor when floor changes
+      window.addEventListener('floor-changed', (e) => {
+        directionsUI.updateCurrentFloor(e.detail.floorId);
+      });
+
+    } catch (error) {
+      console.error('Failed to initialize pathfinding:', error);
     }
 
 

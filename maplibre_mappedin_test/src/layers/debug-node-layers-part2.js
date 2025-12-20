@@ -248,14 +248,15 @@ export const debugNodesPart2 = {
                 const props = feature.properties;
                 const coordinates = feature.geometry.coordinates.slice();
 
-                new maplibregl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(`
-                        <strong>Location:</strong> ${props.name}<br>
-                        <strong>ID:</strong> ${props.locationId}<br>
-                        <strong>Floor:</strong> ${props.floorId}
-                    `)
-                    .addTo(this.map);
+                // Dispatch custom event for DirectionsUI to handle
+                window.dispatchEvent(new CustomEvent('location-clicked', {
+                    detail: {
+                        name: props.name,
+                        coords: coordinates,
+                        floorId: props.floorId,
+                        locationId: props.locationId
+                    }
+                }));
             });
 
             this.map.on('mouseenter', layerId, () => {
