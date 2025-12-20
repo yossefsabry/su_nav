@@ -75,6 +75,19 @@ async function initApp() {
     const nodeFeatures = await loadNodes(floors);
     // layerManager.addNodes(nodeFeatures); // Visuals removed
 
+    // 6b. Load and display Wall Nodes (from temp_mvf processing)
+    try {
+      const response = await fetch('/assets/wall_nodes.geojson');
+      if (response.ok) {
+        const wallNodesData = await response.json();
+        layerManager.addWallNodes(wallNodesData);
+      } else {
+        console.warn('Failed to load wall_nodes.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading wall nodes:', e);
+    }
+
     // 6b. Debug Nodes removed per user request
     /*
     const debugCategories = {

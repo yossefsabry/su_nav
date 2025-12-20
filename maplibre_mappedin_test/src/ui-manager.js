@@ -19,7 +19,7 @@ export class UIManager {
         container.innerHTML = '';
 
         // Track which floors are visible (start with first floor visible)
-        this.visibleFloors = new Set([this.currentFloorId]);
+        // this.visibleFloors = new Set([this.currentFloorId]);
 
         this.floors.forEach(floor => {
             const btn = document.createElement('button');
@@ -32,25 +32,18 @@ export class UIManager {
             btn.onclick = () => {
                 const floorId = floor.properties.id;
 
-                // Toggle floor visibility
-                if (this.visibleFloors.has(floorId)) {
-                    // Hide this floor
-                    this.visibleFloors.delete(floorId);
-                    btn.classList.remove('active');
-
-                    // If this was the current floor, switch to another visible floor
-                    if (this.currentFloorId === floorId && this.visibleFloors.size > 0) {
-                        this.currentFloorId = Array.from(this.visibleFloors)[0];
-                    }
-                } else {
-                    // Show this floor
-                    this.visibleFloors.add(floorId);
-                    btn.classList.add('active');
+                // Enforce single floor selection
+                if (this.currentFloorId !== floorId) {
                     this.currentFloorId = floorId;
-                }
 
-                // Update visibility for all visible floors
-                this.layerManager.updateMultiFloorVisibility(this.visibleFloors);
+                    // Update button states
+                    const buttons = container.getElementsByTagName('button');
+                    Array.from(buttons).forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Update map visibility
+                    this.layerManager.updateFloorVisibility(this.currentFloorId);
+                }
             };
 
             container.insertBefore(btn, container.firstChild);

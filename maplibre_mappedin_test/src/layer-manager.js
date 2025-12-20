@@ -407,8 +407,61 @@ export class LayerManager {
             if (this.map.getLayer(layerId)) {
                 if (layerId === 'building-shell') return;
                 // Show layer if its floorId is in the visible set
-                this.map.setFilter(layerId, ['in', ['get', 'floorId'], ...Array.from(visibleFloorIds)]);
+                this.map.setFilter(layerId, ['in', ['get', 'floorId'], ['literal', Array.from(visibleFloorIds)]]);
             }
         });
+    }
+
+    addWallNodes(geojsonData) {
+        const sourceId = 'wall-nodes-source';
+        const layerId = 'wall-nodes-layer';
+
+        if (this.map.getSource(sourceId)) {
+            this.map.getSource(sourceId).setData(geojsonData);
+        } else {
+            this.map.addSource(sourceId, {
+                type: 'geojson',
+                data: geojsonData
+            });
+
+            this.map.addLayer({
+                id: layerId,
+                type: 'circle',
+                source: sourceId,
+                minzoom: this.MIN_ZOOM_INDOOR,
+                paint: {
+                    'circle-radius': 3,
+                    'circle-color': '#FF0000', // Red for walls/obstacles
+                    'circle-stroke-width': 1,
+                    'circle-stroke-color': '#ffffff',
+                    'circle-opacity': 0.8
+                }
+            });
+            this.mvfLayerIds.add(layerId);
+
+            // Add click listener for popup
+            this.map.on('click', layerId, (e) => {
+                const feature = e.features[0];
+                const props = feature.properties;
+                const coordinates = feature.geometry.coordinates.slice();
+
+                new maplibregl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(`
+                        <strong>Type:</strong> Wall Node<br>
+                        <strong>Original ID:</strong> ${props.originalId}<br>
+                        <strong>Floor:</strong> ${props.floorId}
+                    `)
+                    .addTo(this.map);
+            });
+
+            // Change cursor on hover
+            this.map.on('mouseenter', layerId, () => {
+                this.map.getCanvas().style.cursor = 'pointer';
+            });
+            this.map.on('mouseleave', layerId, () => {
+                this.map.getCanvas().style.cursor = '';
+            });
+        }
     }
 }
