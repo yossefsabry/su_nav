@@ -1,0 +1,4130 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372020553793455,
+          30.87920837565012
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_e0f8d8a7c15a1689",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3721082694161,
+          30.87880732680921
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_3ea1085a4806bd48",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37203491375941,
+          30.87881104178945
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_d356b6556ef78b0f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37164109423749,
+          30.87904561604077
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_52905dd9e3ba12da",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37188587356737,
+          30.87905763653457
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_0f4b652cf05fcb79",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37228224721504,
+          30.879111067594458
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_aae1fb0ef503d0ed",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3725424251888,
+          30.87895103845824
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_5c9df8a0b400c775",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37194020876276,
+          30.879034467585516
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_1f112c8b56f4e1a8",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37231985564366,
+          30.878808897353288
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_5de672a06f86c72b",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37229725678655,
+          30.878641507982195
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_46158464dacca195",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37185888963815,
+          30.879069932303167
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_d9dd50fa912642be",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37219279171796,
+          30.879128367986418
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_17038682e829ef59",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37230236970343,
+          30.87906712610006
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_8d0ffd354c0e723a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37228982365752,
+          30.87900791062176
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_65897aae72447c81",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372431826478156,
+          30.87866948656049
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_4c58820bfe7b7f65",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37258988828378,
+          30.878875747952318
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_4327d2ee51424f44",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37204068408004,
+          30.87904363082115
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_e1a78c62e3689e7c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37213661378697,
+          30.878831953339397
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_8e300c2aee686533",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372265987973805,
+          30.87890683283508
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_0bcecd1fdaa59ed9",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372344206603984,
+          30.878621364021413
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_e834e487ae6a6ae8",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37253487305513,
+          30.87879379834549
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_f742618f95a697c2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371874976204516,
+          30.878960116124883
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_703ace2f3a89979b",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37245822102545,
+          30.8789464105627
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_097fcbf1e4b34121",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37188581993332,
+          30.879300256848637
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_637236418edbdff8",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372301552914166,
+          30.878883347349657
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_4c339a47439a2379",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372248516888604,
+          30.87913014993118
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_d91cea6a4b000846",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3723858526153,
+          30.878860715716694
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_99deace24d6679b5",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37163921454256,
+          30.879029241887547
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_9484e34546455319",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37171760463647,
+          30.8790827616813
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_4389752bbb53a784",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372130870932786,
+          30.879090725621758
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_c0b9b438dbba1bcd",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372223430545226,
+          30.879133765488906
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_cfb0a891c85faf73",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37195366596884,
+          30.879267179961683
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_d1ff4d3c01a039f4",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37240553571657,
+          30.878596575151374
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_30977226144c402e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37236246110024,
+          30.87877637313265
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_e696119d8f1abe19",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37237182259016,
+          30.878592974768697
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_3fd0e0aa79ed7d43",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3718466643727,
+          30.878975659592818
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_244e1808f8b2aaf9",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372425576817314,
+          30.878602813295434
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_395c0b340ac128e3",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37167531656426,
+          30.879019401544884
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_1e7e8f54054556c6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371816466623834,
+          30.879007054848504
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_8f25cc1b46fddf48",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37201038871389,
+          30.878903920042752
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_2146c723d85ad407",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37231996216452,
+          30.87872735732168
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_2a895b3439754ac4",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371730234255985,
+          30.878961368531936
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_ee68370a41d94b5c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37234887507572,
+          30.878795399778635
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_ca55d60d7f4dd40a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37230325867082,
+          30.87903694714683
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_c5dfdc72af343fc4",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37169197786626,
+          30.87898065682237
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_41f8bd542b0222cb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37216248387228,
+          30.879120799726774
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_9f0daa1705cdcad1",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3720019104864,
+          30.878999961931452
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_96bd2787abde0190",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37190297210996,
+          30.87903495810292
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_9dae5a5e60a0b1e2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372120992568306,
+          30.878953054540247
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_09d295277a2a8310",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372244208407515,
+          30.87875117629024
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_6e287a32754225b6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37228994394841,
+          30.878822314916338
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_7d7fb6ba8f31291c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37197649115636,
+          30.878872895947428
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_7bb86ad2b7e3a32a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37180234390051,
+          30.879219351096356
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_103d40cc217adf1b",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371993148522755,
+          30.87906686458646
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_b09d9fdefa0f5381",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371894049776536,
+          30.879096207753644
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_bc0a1eaa01358a45",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371920959280544,
+          30.87907512247677
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_b0c5de316e2fbf33",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37164658458615,
+          30.878994850490937
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_5668390f11182cb6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37163638486156,
+          30.879011643844297
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_58a1644c3ea61b93",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3723887288512,
+          30.87859609067139
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_78a22099038861e7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37238322214565,
+          30.87861782546437
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_a68eb6032114ff31",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371809912615966,
+          30.878926108252372
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_f0db77b3a89b509e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372386663106816,
+          30.878820820686133
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_94036f1145f24a4e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37234744777999,
+          30.87882717071436
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_bc45bfa792bef103",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372464884542964,
+          30.878781625530536
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_3349955e8488ac26",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37182165431285,
+          30.879146962327518
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_cf37e16a55cdb1bb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37192381032256,
+          30.879123506917978
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_7b75674ae1e17c46",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37224295048965,
+          30.878874217915353
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_7beaa47156bec888",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37216229047353,
+          30.878984609948933
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_e92cf00f4e0bee5c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226721272593,
+          30.878733721466016
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_ad097d9097b12f85",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37223010604814,
+          30.87869237747048
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_32aef3eace56a65a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372222809734396,
+          30.879065371187732
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_232ed75411b46a25",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37220129092297,
+          30.879094933884915
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_e4cdfc4c82aded7e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37223439574718,
+          30.87910034509712
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_2876a02bfd69eeaf",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37225667805693,
+          30.879086687888577
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_74f5af01c10bfc4e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372263650772624,
+          30.879058571754303
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_5c40e0efce36f2bd",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37229899015922,
+          30.87908933246242
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_6fb58fe4a2de904e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226349902533,
+          30.878904558849953
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_54e00177bb399414",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37204847660561,
+          30.879028224344843
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_7c6ce11fb47bc26d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37247509488776,
+          30.878771945969216
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_8ad911cae824f6cf",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226989511362,
+          30.87897608403609
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_f41098201820d2bc",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37210557611802,
+          30.87906868874066
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_cde8406b886efbee",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37249378277001,
+          30.878743272259985
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_d1c77a4dfad28be2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371767095612064,
+          30.879158307831688
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_5df5ef21c74f3a59",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181893033869,
+          30.87914473293607
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_cebcd7a68b5c6b89",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372201639197506,
+          30.87893269283506
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_2cad8debef0ad899",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37209138773394,
+          30.87899790215911
+        ]
+      },
+      "properties": {
+        "floorId": "f_4c77c4a36c16afa7",
+        "geometryId": "g_48ff944a1cecd845",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372566109682055,
+          30.878872955705422
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_e3ed85ea70b5b514",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37230787232508,
+          30.878877540288485
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_e9430e1d0485f965",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37179796828971,
+          30.87920367965353
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_7e6bcc8adb3f1958",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3723385300997,
+          30.87863258812427
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_e34b6bbf0520b563",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37231248896161,
+          30.878805648017277
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_a3b9071af7752682",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371888574984155,
+          30.87926350641382
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_5d2242a486417fee",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37204469671461,
+          30.879020708099535
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_ea82facc13cdd30c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37201133734747,
+          30.87899453964528
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_b07c3ea077bc3986",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37228875474118,
+          30.878817868673377
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_ae5ad6c9bfbfffe6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37183859289233,
+          30.878989362854345
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_d1280856c93ffa22",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37188827176694,
+          30.879043426144975
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_cdd0e84de21090e9",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37224537272151,
+          30.878686615158415
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_9f89b9ccdc6526c1",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37236937200466,
+          30.87882025690229
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_86b289754ef5b894",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372450950708135,
+          30.87878173997682
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_c70db95dcba9a0fa",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37223710313278,
+          30.878867358034817
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_83ce8ff503fa309a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371908629891905,
+          30.87908170197255
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_9b50b8a0701272bb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37175338154462,
+          30.878939093427732
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_2aebf5068ab6882f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37167307067,
+          30.87900298933945
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_4753b2779dd17890",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37229607385764,
+          30.878728462781204
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_7b0f0090d54cc85f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37194025471438,
+          30.879015778199634
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_b8a3b8ab59ae1cec",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372234541668014,
+          30.87876707839938
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_55a45ac1a5922dd5",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37233788559907,
+          30.878822652349772
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_4f64c2311d99c0ca",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371729580571994,
+          30.878952051800713
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_a59d4bfc756c9cbd",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372167609837774,
+          30.878985961842627
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_20e5a9fb8fc2d8b7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37249896573918,
+          30.878823803926135
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_f92388fdfc63afb7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37237343288269,
+          30.87885110543243
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_b68924c88b43aa4f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37245774408437,
+          30.878971472691692
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_04b2d0401c2b65c1",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37191306371515,
+          30.879032847430146
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_c346fd19817b7173",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3717049844258,
+          30.878971948503896
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_9eaeb35a84a283e6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37227429753397,
+          30.878734786424832
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_12b9f60ae51aca88",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37193117190885,
+          30.87909720456983
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_7cd937fa702e89ab",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371955896460946,
+          30.879262022675967
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_152de9470c051821",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181920157664,
+          30.878924525901784
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_e693b223304f08e7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37174155726076,
+          30.879069401154776
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_a1d98511bfde5214",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37202095318836,
+          30.87919637144202
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_8c66303edd8a1944",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37243863418566,
+          30.87869618293489
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_d9526387438759e7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37199312597013,
+          30.87904674100255
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_6f0d399eb52a8bb0",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37188926210931,
+          30.87896109647384
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_87f0ad9c2a7d6515",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37184083669316,
+          30.879189001261235
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_cee257eb56166a1d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372261559307525,
+          30.878907062052253
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_1b59045d39292a57",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37254642193102,
+          30.878936629554467
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_bced9c0c65919adf",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3723337845659,
+          30.878788992407454
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_3ae03beff2485c38",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372353045079514,
+          30.878773802049864
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_ea8f64a2a20043e2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37192765135784,
+          30.879055372150486
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_495c69143668926f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37187357740857,
+          30.87905510390316
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_62197ec6a19c4482",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371826539333846,
+          30.87914015220034
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_770c77cbe27f6ad0",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37185641998538,
+          30.878960644017347
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_6b37c440a92707d4",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372086462764365,
+          30.878957608485866
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_2f9fbc7d6ace1ca1",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37204908595794,
+          30.87882371672661
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_538d975b33065c0d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37254108324126,
+          30.87876934163101
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_dca36a5ae4ea5d59",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226349902533,
+          30.878904558849953
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_b4f1db5711b6cc96",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37204847660561,
+          30.879028224344843
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_ca78be2859c9f335",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37249378277001,
+          30.878743272259985
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_b3516ae85257a27e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371767095612064,
+          30.879158307831688
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_2a3e59112878289d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226611953018,
+          30.87896774155368
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_8dc01b2006aa93e6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37210903569149,
+          30.879059263976735
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_9f1355ce38365f97",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181893033869,
+          30.87914473293607
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_3fcd34b5a1a9958c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372201639197506,
+          30.87893269283506
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_b876ff3856d0922e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37209138773394,
+          30.87899790215911
+        ]
+      },
+      "properties": {
+        "floorId": "f_757f33a6595b91ef",
+        "geometryId": "g_70d103b18e0caec9",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37237730213434,
+          30.878812381974672
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_ee3b70ac8b84583c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226563180707,
+          30.878734308075508
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_80a92ee9fe3e3517",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371724034666215,
+          30.878929901567336
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_eb07821f9cadd1ed",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371869844617585,
+          30.878941457477563
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_0b58c48d5220913f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371893360005615,
+          30.87909491599581
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_2baa1914b63dc55c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37223308644304,
+          30.878864617291292
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_be3ca83db149ed6c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37227069559852,
+          30.878616934453667
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_315f7755ad5ccbba",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37229828068528,
+          30.878722267162114
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_c733b8dc5cea4b19",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37231569539005,
+          30.87860717501756
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_d39ce4eeca6328e0",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37233553320231,
+          30.878781359233805
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_4ba7ba7a274d78fa",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37209370772355,
+          30.87932392926019
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_3988999176cfa290",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37258328514417,
+          30.87904919054321
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_a23285de9e912739",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37200173082844,
+          30.87900174338719
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_71c399c09e5251eb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37180728593238,
+          30.87914274088692
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_f0c1befa5e118e8e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371940017038376,
+          30.87902453090548
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_3d05a938726576e9",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37193128034465,
+          30.879105695215717
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_c35bc9413f016a7a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371716818554994,
+          30.879088599817724
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_c2b5f35e96447628",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371874400126465,
+          30.879054303111047
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_da8aa55ffc0f3efc",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37244550212215,
+          30.878676028678022
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_775ba99cd0bc262d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3720037061376,
+          30.87923078807186
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_37c81a3cd8307193",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37234960096678,
+          30.87882783354141
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_aea1e6f77df5e1cd",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37224713819313,
+          30.878752661840917
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_1c8f870c8e639b81",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371893875308004,
+          30.879031425574105
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_bf54efbd20f730ce",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37169294521627,
+          30.878958323767183
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_55836a1b9e1dc4c6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37203099122183,
+          30.879031102621706
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_e0afdb82a0093e20",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372382083738536,
+          30.87885050622539
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_6b1162a80ea838f6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371915050613076,
+          30.87907136422295
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_ef7623335c2c77fb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37184463648626,
+          30.879316861139017
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_569a28293aca0906",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37237247991263,
+          30.87859580973577
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_31befcb4a0178c4c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372001885149444,
+          30.878785241185717
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_7d79f7ee333ea495",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181060564764,
+          30.879202325012436
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_7c1f526ceeebf8c9",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37265645673246,
+          30.87887713269987
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_115f34e75e8dc36c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37253455083137,
+          30.878797627814063
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_1173ad2d6fe9e635",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372472529972676,
+          30.878776632101044
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_70ea093d0dba5451",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226999311149,
+          30.878828780821394
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_603f237d819dd02a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181405006564,
+          30.878914182324397
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_33298fc0a2946964",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37180874424176,
+          30.878997772670438
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_5ad2e4aeed08cb0c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371842813993645,
+          30.878978088961265
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_e30ee8a70eb8d78f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226246899263,
+          30.878903926612338
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_cc539986a5b9ca00",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37230779425284,
+          30.878889114675502
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_b6596ebf9437e660",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37165451891515,
+          30.878963071712256
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_3104bc9f355fc040",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37166122109811,
+          30.878998211148037
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_85cb5499de98eed8",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37198778979356,
+          30.879057198264906
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_c2f08806f9ce6ea6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37248637631574,
+          30.878978653908128
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_323544c505aad518",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372589253470636,
+          30.878947954163642
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_7179984eaa8627bb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372234567755804,
+          30.87867598617806
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_c128686dd22538db",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37195549601204,
+          30.879283311804475
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_973e4987981fb944",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37212088851226,
+          30.87893482050978
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_15930da86daa900d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226349902533,
+          30.878904558849953
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_55c76b0e94e4f48d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37204847660561,
+          30.879028224344843
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_fbd9fe2927f3c4c2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37170089859889,
+          30.87919458307855
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_d66d16c6196af275",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37235019564401,
+          30.879224653793905
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_554d5f95232a43a5",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372257451415585,
+          30.87924138129481
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_d8cad0017fede9e5",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37239435999118,
+          30.879159746731084
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_15229044bdbc1cd9",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3725899005401,
+          30.878690711430313
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_48899a766c399421",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371937638942285,
+          30.878908616856773
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_112da52d526af85f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372161620397385,
+          30.87878052642793
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_60cb78d21b97badf",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37215190775087,
+          30.878981333696576
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_a3b963d55894f43f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372082276982226,
+          30.878953818498516
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_afa5a3334d9faf5b",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37214966744945,
+          30.878914932810147
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_2d93f75740f72735",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37247509488776,
+          30.878771945969216
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_3949bf938f5fbbd9",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37249378277001,
+          30.878743272259985
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_f57180d1bc9d6df3",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371767095612064,
+          30.879158307831688
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_d94014d6beaaba3d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181893033869,
+          30.87914473293607
+        ]
+      },
+      "properties": {
+        "floorId": "f_b5369b1f7a27bb97",
+        "geometryId": "g_679eff795183783e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37243593367338,
+          30.878659029905926
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_bc2bc7bfae07ef6f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37196843888146,
+          30.879063749859778
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_9445d1e4eb09f6d0",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372283380042475,
+          30.87884481005849
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_528254d48f3a513b",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372349896579486,
+          30.8787714833283
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_4db785c4071b8eb0",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37205165760843,
+          30.87887204282827
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_881eddeba7abf99c",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37184320484931,
+          30.87896760354995
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_a21619e43ecbe574",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37228669156342,
+          30.878628370114086
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_95d336623aaccc3b",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226642824891,
+          30.878730984503644
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_e6b763790fba25a7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37236919434374,
+          30.878812428412513
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_1be677d0135c6481",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371732599133686,
+          30.87894579401975
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_14dcb437d964d18b",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372536093455295,
+          30.878790095417724
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_db8907377d455ae8",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37260684488986,
+          30.87890680706254
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_5892c384fdeaa688",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37232631715682,
+          30.87860161850022
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_4bf2001d5d2d68a5",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37247795014223,
+          30.878963395083012
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_ce04768b4c9a9d12",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37169582045045,
+          30.879060510776917
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_489edcf46c5595f6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371873134748256,
+          30.878950762698235
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_bd6dc77908038f52",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371821439884506,
+          30.879140468468666
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_98bb8c71c8d81416",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181479027526,
+          30.879184250675387
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_276bfe29e23e1905",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372301360589475,
+          30.878705956502166
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_d3e854eb78832b96",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371676770763386,
+          30.879001122294454
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_6b24addd885540d1",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37194339025847,
+          30.879262585742566
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_4e92bf47f69633c6",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37191461480141,
+          30.87929467662509
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_41eae7b6810ba2ae",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3722212490353,
+          30.878861711274425
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_008af7458d3ea6d7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3722578186733,
+          30.87890879042045
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_7786aac27c2c5175",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372539084709196,
+          30.878952947819002
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_b2cb26ffaead81b4",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372339448697,
+          30.87878917589772
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_5d4a0c1629077746",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181293108297,
+          30.87899697767019
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_ee408946399aeb7e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372025918636595,
+          30.87903113383677
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_73cd51ba594c4850",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37199898011752,
+          30.878999538790975
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_77b3d3f5fde64f93",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37190499072532,
+          30.87903497193528
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_41f68b0962223d19",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37227414970278,
+          30.878881801915963
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_a3b0f45299e88d5e",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3718575406763,
+          30.87926908912646
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_cb663450c2a5f0ad",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37169886848325,
+          30.878971938720667
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_5f96c3d95a48a937",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37233911994839,
+          30.87882128015362
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_2bfa4a1d48067ac7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372081668237875,
+          30.878855157387175
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_dd80534c400cdb37",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37192961052208,
+          30.879104177561302
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_ef713b0d35499fdb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3720069223654,
+          30.87920328377886
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_bf7f9317fd8446e2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37230654472854,
+          30.878806794282315
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_3ce9ef769b696dab",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371803658418706,
+          30.87892831762742
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_de2c6c9f9904995f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372387835302156,
+          30.8788386318716
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_65850d663a12c892",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372239504617106,
+          30.878757035569738
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_1007fccf3736cd6a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371883574436744,
+          30.879083781745333
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_0a3ff67dc03f51a2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37223600043713,
+          30.878689289443248
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_ee3c869849bd4993",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37255967359936,
+          30.878869071871197
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_e2bfce272d79da73",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372611550263876,
+          30.87886168532462
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_910c5ab2a09dc5d7",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372456799822764,
+          30.878775711690597
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_46a4c56baccba2cb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372313572678785,
+          30.87887102532574
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_92eef5e1ccb24c52",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372019629099306,
+          30.87882101066437
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_12d4392af982f529",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3723789371493,
+          30.878602255581207
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_a036f12e70ef9e2d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37195184844318,
+          30.879033279039707
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_583433a61f165186",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372004833560716,
+          30.879040971806713
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_b689978d61bc6520",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372129538000344,
+          30.878937590059447
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_dd9872cffe7de0ae",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37187779707962,
+          30.879046911108055
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_1a70bcbcb7c4139d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37185449374387,
+          30.879052576151462
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_e41147d03c5d6442",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371911739946235,
+          30.87906676175489
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_9dfaff0a99287c7d",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37226349902533,
+          30.878904558849953
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_1d8a0a4e4fa91f59",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37204847660561,
+          30.879028224344843
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_8bea75379148fd04",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37215190775087,
+          30.878981333696576
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_5acc253e830d305b",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372082276982226,
+          30.878953818498516
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_2fd789f7827ca290",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37214966744945,
+          30.878914932810147
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_7b7583f02bb461eb",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37247509488776,
+          30.878771945969216
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_963d1d830e3a52e2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37249378277001,
+          30.878743272259985
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_85a0b8c913a5fca2",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.371767095612064,
+          30.879158307831688
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_a009a050ae92ea4f",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37181893033869,
+          30.87914473293607
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_697cb802779a60fd",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.372201639197506,
+          30.87893269283506
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_8c9fec69c3efb83a",
+        "type": "walkable"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.37209138773394,
+          30.87899790215911
+        ]
+      },
+      "properties": {
+        "floorId": "f_f00f735a7e70bee6",
+        "geometryId": "g_fc5460bf953cf593",
+        "type": "walkable"
+      }
+    }
+  ]
+}

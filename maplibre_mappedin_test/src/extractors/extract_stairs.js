@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Read connections.json
-const connections = JSON.parse(fs.readFileSync('./temp_mvf/connections.json', 'utf8'));
+const connections = JSON.parse(fs.readFileSync(path.join(__dirname, '../../temp_mvf/connections.json'), 'utf8'));
 
 // Filter stairs connections
 const stairsConnections = connections.filter(c => c.type === 'stairs');
@@ -36,7 +36,7 @@ Object.keys(stairsByFloor).forEach(floorId => {
 });
 
 // Now read geometry files and extract stair locations
-const geometryDir = './temp_mvf/geometry';
+const geometryDir = path.join(__dirname, '../../temp_mvf/geometry');
 const geometryFiles = fs.readdirSync(geometryDir).filter(f => f.endsWith('.geojson') || f.endsWith('.json'));
 
 const stairFeatures = [];
@@ -96,6 +96,6 @@ const stairsGeoJSON = {
 };
 
 // Save to assets folder
-fs.writeFileSync('./assets/stairs_nodes.geojson', JSON.stringify(stairsGeoJSON, null, 2));
+fs.writeFileSync(path.join(__dirname, '../../assets/stairs_nodes.geojson'), JSON.stringify(stairsGeoJSON, null, 2));
 
 console.log('✅ Saved stairs nodes to assets/stairs_nodes.geojson');

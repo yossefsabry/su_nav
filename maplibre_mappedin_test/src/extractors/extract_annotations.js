@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Read annotations
-const annotationsPath = './temp_mvf/annotations/f_b5369b1f7a27bb97.json';
+const annotationsPath = path.join(__dirname, '../../temp_mvf/annotations/f_b5369b1f7a27bb97.json');
 const annotations = JSON.parse(fs.readFileSync(annotationsPath, 'utf8'));
 
 console.log(`Found ${annotations.length} annotations`);
@@ -19,7 +19,7 @@ Object.entries(byType).forEach(([type, count]) => {
 });
 
 // Read geometry for ground floor
-const geometryPath = './temp_mvf/geometry/f_b5369b1f7a27bb97.geojson';
+const geometryPath = path.join(__dirname, '../../temp_mvf/geometry/f_b5369b1f7a27bb97.geojson');
 const geometryData = JSON.parse(fs.readFileSync(geometryPath, 'utf8'));
 
 const annotationFeatures = [];
@@ -80,6 +80,6 @@ const annotationsGeoJSON = {
 };
 
 // Save to assets folder
-fs.writeFileSync('./assets/annotation_nodes.geojson', JSON.stringify(annotationsGeoJSON, null, 2));
+fs.writeFileSync(path.join(__dirname, '../../assets/annotation_nodes.geojson'), JSON.stringify(annotationsGeoJSON, null, 2));
 
 console.log('✅ Saved annotation nodes to assets/annotation_nodes.geojson');

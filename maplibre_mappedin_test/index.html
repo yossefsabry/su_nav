@@ -12,6 +12,8 @@
     <div id="header">
         <h1>Campus Map</h1>
         <p>Interactive 3D Navigation</p>
+        <div id="building-address"
+            style="margin-top: 8px; font-size: 14px; color: rgba(255,255,255,0.8); font-style: italic;"></div>
     </div>
     <div id="floor-controls"></div>
     <div id="map"></div>
@@ -53,46 +55,45 @@
                     <div class="legend-desc">Primary & secondary entrances</div>
                 </div>
             </div>
-            <div class="legend-item disabled">
+            <div class="legend-item toggleable active" data-layer="walkable-nodes-layer">
+                <div class="legend-checkbox">✓</div>
                 <div class="legend-color" style="background-color: #00FF00;"></div>
                 <div class="legend-info">
                     <div class="legend-name">Walkable Nodes</div>
-                    <div class="legend-desc">Pathfinding nodes (not visible)</div>
+                    <div class="legend-desc">Pathfinding walkable areas (275 nodes)</div>
                 </div>
             </div>
-            <div class="legend-item disabled">
+            <div class="legend-item toggleable active" data-layer="nonwalkable-nodes-layer">
+                <div class="legend-checkbox">✓</div>
                 <div class="legend-color" style="background-color: #FFA500;"></div>
                 <div class="legend-info">
                     <div class="legend-name">Non-walkable Nodes</div>
-                    <div class="legend-desc">Blocked areas (commented out)</div>
+                    <div class="legend-desc">Blocked areas (1323 nodes)</div>
                 </div>
             </div>
-            <div class="legend-item disabled">
-                <div class="legend-color" style="background-color: #0000FF;"></div>
+            <div class="legend-item toggleable active" data-layer="kinds-nodes-layer">
+                <div class="legend-checkbox">✓</div>
+                <div class="legend-color"
+                    style="background: linear-gradient(135deg, #0000FF 0%, #9400D3 50%, #FFD700 100%);"></div>
                 <div class="legend-info">
                     <div class="legend-name">Kinds Nodes</div>
-                    <div class="legend-desc">Type classifications (commented out)</div>
+                    <div class="legend-desc">Type classifications: walls, rooms, objects (1308 nodes)</div>
                 </div>
             </div>
-            <div class="legend-item disabled">
+            <div class="legend-item toggleable active" data-layer="entrance-aesthetic-nodes-layer">
+                <div class="legend-checkbox">✓</div>
                 <div class="legend-color" style="background-color: #800080;"></div>
                 <div class="legend-info">
-                    <div class="legend-name">Entrance Nodes</div>
-                    <div class="legend-desc">Entry points (commented out)</div>
+                    <div class="legend-name">Entrance Aesthetic Nodes</div>
+                    <div class="legend-desc">Entrance points (244 nodes)</div>
                 </div>
             </div>
-            <div class="legend-item disabled">
-                <div class="legend-color" style="background-color: #00FFFF;"></div>
+            <div class="legend-item toggleable active" data-layer="location-markers-layer">
+                <div class="legend-checkbox">✓</div>
+                <div class="legend-color" style="background-color: #FFD700;"></div>
                 <div class="legend-info">
-                    <div class="legend-name">Annotation Nodes</div>
-                    <div class="legend-desc">Markers (commented out)</div>
-                </div>
-            </div>
-            <div class="legend-item disabled">
-                <div class="legend-color" style="background-color: #FFFF00;"></div>
-                <div class="legend-info">
-                    <div class="legend-name">Location Nodes</div>
-                    <div class="legend-desc">Places (commented out)</div>
+                    <div class="legend-name">Location Markers</div>
+                    <div class="legend-desc">POI locations (2 markers)</div>
                 </div>
             </div>
         </div>

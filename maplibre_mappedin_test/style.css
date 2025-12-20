@@ -477,8 +477,12 @@ body {
   position: absolute;
   top: 20px;
   right: 20px;
+  bottom: 80px;
+  /* Leave space for map controls (zoom, compass) */
   z-index: 10;
   width: 280px;
+  max-height: calc(100vh - 100px);
+  /* Prevent extending beyond viewport */
   background: rgba(30, 30, 30, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -487,6 +491,11 @@ body {
   padding: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+    margin: 30px;
+  /* Prevent content from overflowing */
 }
 
 #developer-legend:hover {
@@ -519,6 +528,32 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: auto;
+  /* Enable scrolling for long lists */
+  overflow-x: hidden;
+  flex: 1;
+  /* Take remaining space */
+  padding-right: 4px;
+  /* Space for scrollbar */
+}
+
+/* Custom scrollbar for legend items */
+.legend-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.legend-items::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.legend-items::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.legend-items::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .legend-item {

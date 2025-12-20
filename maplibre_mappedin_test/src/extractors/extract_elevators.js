@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Read connections.json
-const connections = JSON.parse(fs.readFileSync('./temp_mvf/connections.json', 'utf8'));
+const connections = JSON.parse(fs.readFileSync(path.join(__dirname, '../../temp_mvf/connections.json'), 'utf8'));
 
 // Filter elevator connections
 const elevatorConnections = connections.filter(c => c.type === 'elevator');
@@ -36,7 +36,7 @@ Object.keys(elevatorsByFloor).forEach(floorId => {
 });
 
 // Now read geometry files and extract elevator locations
-const geometryDir = './temp_mvf/geometry';
+const geometryDir = path.join(__dirname, '../../temp_mvf/geometry');
 const geometryFiles = fs.readdirSync(geometryDir).filter(f => f.endsWith('.geojson') || f.endsWith('.json'));
 
 const elevatorFeatures = [];
@@ -96,6 +96,6 @@ const elevatorsGeoJSON = {
 };
 
 // Save to assets folder
-fs.writeFileSync('./assets/elevator_nodes.geojson', JSON.stringify(elevatorsGeoJSON, null, 2));
+fs.writeFileSync(path.join(__dirname, '../../assets/elevator_nodes.geojson'), JSON.stringify(elevatorsGeoJSON, null, 2));
 
 console.log('✅ Saved elevator nodes to assets/elevator_nodes.geojson');

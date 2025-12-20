@@ -73,6 +73,20 @@ async function initApp() {
     layerManager.addDoors(geometry, entranceIds, entranceGeometryToFloorMap);
     layerManager.addLabels(locations, geometry);
 
+    // 5a. Load and display building address
+    try {
+      const response = await fetch('/temp_mvf/address.json');
+      if (response.ok) {
+        const addressData = await response.json();
+        const addressDisplay = document.getElementById('building-address');
+        if (addressDisplay && addressData.primary?.display?.displayAddress) {
+          addressDisplay.textContent = addressData.primary.display.displayAddress;
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to load building address:', e);
+    }
+
     // 6. Load Nodes (Data only, for pathfinding)
     const nodeFeatures = await loadNodes(floors);
     // layerManager.addNodes(nodeFeatures); // Visuals removed
@@ -127,6 +141,73 @@ async function initApp() {
       }
     } catch (e) {
       console.error('Error loading annotation nodes:', e);
+    }
+
+
+    // 6f. Load and display Walkable Nodes
+    try {
+      const response = await fetch('/assets/walkable_nodes.geojson');
+      if (response.ok) {
+        const walkableNodesData = await response.json();
+        layerManager.addWalkableNodes(walkableNodesData);
+      } else {
+        console.warn('Failed to load walkable_nodes.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading walkable nodes:', e);
+    }
+
+    // 6g. Load and display Nonwalkable Nodes
+    try {
+      const response = await fetch('/assets/nonwalkable_nodes.geojson');
+      if (response.ok) {
+        const nonwalkableNodesData = await response.json();
+        layerManager.addNonwalkableNodes(nonwalkableNodesData);
+      } else {
+        console.warn('Failed to load nonwalkable_nodes.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading nonwalkable nodes:', e);
+    }
+
+    // 6h. Load and display Kinds Nodes
+    try {
+      const response = await fetch('/assets/kinds_nodes.geojson');
+      if (response.ok) {
+        const kindsNodesData = await response.json();
+        layerManager.addKindsNodes(kindsNodesData);
+      } else {
+        console.warn('Failed to load kinds_nodes.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading kinds nodes:', e);
+    }
+
+    // 6i. Load and display Entrance-Aesthetic Nodes
+    try {
+      const response = await fetch('/assets/entrance_aesthetic_nodes.geojson');
+      if (response.ok) {
+        const entranceAestheticNodesData = await response.json();
+        layerManager.addEntranceAestheticNodes(entranceAestheticNodesData);
+      } else {
+        console.warn('Failed to load entrance_aesthetic_nodes.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading entrance-aesthetic nodes:', e);
+    }
+
+
+    // 6j. Load and display Location Markers
+    try {
+      const response = await fetch('/assets/location_markers.geojson');
+      if (response.ok) {
+        const locationMarkersData = await response.json();
+        layerManager.addLocationMarkers(locationMarkersData);
+      } else {
+        console.warn('Failed to load location_markers.geojson');
+      }
+    } catch (e) {
+      console.error('Error loading location markers:', e);
     }
 
 

@@ -1,33 +1,26 @@
-❌ UNUSED NODE TYPES IN TEMP_MVF
-Based on my analysis, here are the node types NOT currently displayed on your map:
 
-1. 🛗 ELEVATOR NODES - Found in 
-connections.json
-Count: 2 elevator connections
-Total Locations: 8 nodes (4 floors × 2 elevators)
-Status: ❌ NOT USED
-Potential: Could display as cyan circles for elevator locations
 
-2. 🟢 WALKABLE NODES - Folder: walkable/
-    Files: 4 files (one per floor)
-    Status: ❌ NOT DISPLAYED (loaded for pathfinding but not visible)
-    Potential: Could show as green dots for debugging walkable areas
+Think of them as "Google Maps for the indoors." While GPS works great for finding a building, it often fails once you're inside a complex structure like a mall or an airport. That’s the problem Mappedin solves.
 
-3. 🔵 KINDS NODES - Folder: kinds/
-Files: 4 files (one per floor)
-Total Size: ~42KB of data
-Status: ❌ NOT USED
-Potential: Node type classifications/categories
 
-4. 🔵 ANNOTATIONS - Folder: annotations/
-Files: 1 file ( f_b5369b1f7a27bb97.json )
-Size: 889 bytes
-Status: ❌ NOT USED
-Symbols Available: Primary Entrance, Secondary Entrance
-Potential: Special markers for entrances
+1. The "Graph" (The Hidden Web)
+Even though you see a beautiful 3D map, underneath it lies a mathematical Graph.
 
-5. 🚪 DOOR NODES - Found in 
-connections.json
-Count: Hundreds of door connections
-Status: ⚠️ PARTIALLY USED (rendered as 3D geometry, not as clickable nodes)
-Potential: Could add interactive door markers
+Nodes: These are invisible points placed throughout the walkable areas (hallways, rooms, entrances). In Mappedin, these nodes often carry "metadata," such as which floor they are on or if they are near an elevator.
+
+Edges: These are the connections between nodes. Each "edge" has a weight, which usually represents the physical distance. If a path goes from Node A to Node B, the algorithm "costs" it based on that distance.
+
+2. How the Algorithm Navigates the Nodes
+When you ask for directions, the engine performs a search:
+
+Dijkstra's: It explores all possible directions from your start node, gradually moving outward until it hits your destination. It ensures you get the absolute shortest path.
+
+A* (The "Smart" Version): Mappedin likely uses A* because it's faster for web browsers. It uses a "heuristic" (an educated guess) to prioritize nodes that are physically closer to the destination, meaning it doesn't waste time checking paths that lead the wrong way.
+
+Multi-Floor Logic: This is the "secret sauce." To go from Floor 1 to Floor 2, the algorithm treats an elevator or stairs as a special "edge" that connects a node on one map to a node on another.
+
+3. Making it Look "Nice" (Path Smoothing)
+If a person just followed nodes, the path might look "zig-zaggy" or robotic. Mappedin applies Path Smoothing after the algorithm finds the route. It "pulls the string" tight on the calculated path to create the smooth, curved, or straight lines you see in their online preview.
+
+4. Special Constraints (Accessibility)
+Mappedin's node system is "tagged." If you toggle "Accessible Route," the algorithm temporarily "deletes" or ignores any edges that represent stairs. It then re-calculates the path using only "Elevator" or "Ramp" nodes.
