@@ -71,9 +71,9 @@ export const debugNodesPart1 = {
                 source: sourceId,
                 minzoom: this.MIN_ZOOM_INDOOR,
                 paint: {
-                    'circle-radius': 5,
+                    'circle-radius': 3,
                     'circle-color': '#FF00FF',
-                    'circle-stroke-width': 2,
+                    'circle-stroke-width': 1.5,
                     'circle-stroke-color': '#ffffff',
                     'circle-opacity': 0.9
                 }
@@ -123,9 +123,9 @@ export const debugNodesPart1 = {
                 source: sourceId,
                 minzoom: this.MIN_ZOOM_INDOOR,
                 paint: {
-                    'circle-radius': 6,
+                    'circle-radius': 3,
                     'circle-color': '#00FFFF',
-                    'circle-stroke-width': 2,
+                    'circle-stroke-width': 1.5,
                     'circle-stroke-color': '#ffffff',
                     'circle-opacity': 0.9
                 }
@@ -176,8 +176,8 @@ export const debugNodesPart1 = {
             const el = document.createElement('div');
             el.className = `annotation-marker ${iconType}`;
             el.innerHTML = `<div class="annotation-icon">${svgContent}</div>`;
-            el.style.width = '24px';
-            el.style.height = '24px';
+            el.style.width = '14px';
+            el.style.height = '14px';
 
             const marker = new maplibregl.Marker({
                 element: el,
@@ -202,5 +202,24 @@ export const debugNodesPart1 = {
         }
 
         this.mvfLayerIds.add('annotation-nodes-layer');
+
+        // Add zoom listener to toggle marker visibility
+        this.map.on('zoom', () => {
+            const currentZoom = this.map.getZoom();
+            const isVisible = currentZoom >= this.MIN_ZOOM_INDOOR;
+
+            this.annotationMarkers.forEach(item => {
+                const el = item.marker.getElement();
+                el.style.display = isVisible ? 'block' : 'none';
+            });
+        });
+
+        // Trigger once to set initial state
+        const initialZoom = this.map.getZoom();
+        if (initialZoom < this.MIN_ZOOM_INDOOR) {
+            this.annotationMarkers.forEach(item => {
+                item.marker.getElement().style.display = 'none';
+            });
+        }
     }
 };

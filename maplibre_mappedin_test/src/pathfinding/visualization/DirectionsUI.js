@@ -20,6 +20,7 @@ export class DirectionsUI {
      * Initialize directions UI
      */
     initialize(currentFloor) {
+        console.log('DirectionsUI initialized with floor:', currentFloor);
         this.currentFloor = currentFloor;
         this.setupLocationClickHandlers();
     }
@@ -33,12 +34,27 @@ export class DirectionsUI {
             const { name, coords, floorId, locationId } = e.detail;
             this.showDirectionsButton(name, coords, floorId);
         });
+
+        // Listen for custom location-deselected event
+        window.addEventListener('location-deselected', () => {
+            this.hideDirectionsPanel();
+        });
     }
 
     /**
      * Show directions button when location is clicked
      */
     showDirectionsButton(locationName, coords, floorId) {
+        // Fly to location
+        this.map.flyTo({
+            center: coords,
+            zoom: 20,
+            pitch: 50,
+            bearing: -20,
+            essential: true,
+            speed: 1.2
+        });
+
         // Remove existing panel
         this.hideDirectionsPanel();
 
@@ -65,7 +81,32 @@ export class DirectionsUI {
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             z-index: 1000;
             min-width: 280px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            min-width: 280px;
+            animation: slideIn 0.3s ease-out;
         `;
+
+        // Add keyframe styles for animations if not present
+        if (!document.getElementById('directions-animations')) {
+            const style = document.createElement('style');
+            style.id = 'directions-animations';
+            style.textContent = `
+                @keyframes slideIn {
+                    from { opacity: 0; transform: translateY(-40%); }
+                    to { opacity: 1; transform: translateY(-50%); }
+                }
+                @keyframes ripple {
+                    0% { box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.4); }
+                    70% { box-shadow: 0 0 0 10px rgba(66, 133, 244, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); }
+                }
+                .btn-ripple:active {
+                    animation: ripple 0.4s linear;
+                }
+            `;
+            document.head.appendChild(style);
+        }
 
         this.directionsPanel.innerHTML = `
             <div style="margin-bottom: 16px;">
@@ -87,7 +128,7 @@ export class DirectionsUI {
                 font-weight: 500;
                 cursor: pointer;
                 transition: all 0.2s;
-            ">
+            " class="btn-ripple">
                 📍 Get Directions
             </button>
             <button id="close-directions-btn" style="

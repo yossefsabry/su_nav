@@ -7,12 +7,16 @@ export const baseLayers = {
     addBuildingShell(floors) {
         if (floors.length > 0) {
             const buildingFootprint = floors[0]; // Ground floor
-            const totalHeight = floors.length * 4;
+            const totalHeight = floors.length * 3; // Reduced from 4 for sleeker appearance
 
             this.map.addSource('building-shell', {
                 type: 'geojson',
                 data: buildingFootprint
             });
+
+            // Initialize location map for lookup
+            this.locationMap = new Map(); // geometryId -> {name, coords, floorId}
+            this.roomStateMap = new Map(); // geometryId -> {source, id (int)}
 
             this.map.addLayer({
                 id: 'building-shell',
@@ -22,7 +26,7 @@ export const baseLayers = {
                 paint: {
                     'fill-extrusion-color': this.themeColors.ExteriorWalls,
                     'fill-extrusion-height': totalHeight,
-                    'fill-extrusion-base': 0.1,
+                    'fill-extrusion-base': 0, // Solid ground contact to prevent glitches
                     'fill-extrusion-opacity': 0.9,
                     'fill-extrusion-vertical-gradient': true
                 }
@@ -98,6 +102,8 @@ export const baseLayers = {
         });
 
         this.first3DLayerId = null;
+        this.hoveredStateId = null; // Track hovered feature
+        this.selectedStateId = null; // Track selected feature
 
         layersToAdd.forEach(item => {
             this.createStyleLayer(item.styleName, item.style, item.features);
@@ -142,9 +148,22 @@ export const baseLayers = {
             isLine = false;
         }
 
+        // Ensure features have integer IDs for feature-state
+        features = features.map((f, index) => ({ ...f, id: index }));
+
+        // Populate roomStateMap for label lookups
+        features.forEach(f => {
+            if (f.properties && f.properties.id) {
+                this.roomStateMap.set(f.properties.id, {
+                    source: styleName,
+                    id: f.id
+                });
+            }
+        });
+
         this.map.addSource(styleName, {
             type: 'geojson',
-            data: { type: 'FeatureCollection', features: features },
+            data: { type: 'FeatureCollection', features: features }
         });
 
         const layerMinZoom = styleName === 'ExteriorWalls' ? 15 : this.MIN_ZOOM_INDOOR;
@@ -158,14 +177,151 @@ export const baseLayers = {
                 source: styleName,
                 minzoom: layerMinZoom,
                 paint: {
-                    'fill-extrusion-color': layerColor,
+                    'fill-extrusion-color': [
+                        'case',
+                        ['boolean', ['feature-state', 'selected'], false], 'rgba(123, 97, 255, 1)',
+                        ['boolean', ['feature-state', 'hover'], false], 'rgba(157, 137, 255, 1)',
+                        layerColor
+                    ],
                     'fill-extrusion-height': layerHeight,
                     'fill-extrusion-base': 0,
                     'fill-extrusion-opacity': layerOpacity,
-                    'fill-extrusion-vertical-gradient': true
+                    'fill-extrusion-vertical-gradient': true,
+                    'fill-extrusion-color-transition': { duration: 300 }
                 }
             });
             this.mvfLayerIds.add(styleName);
+
+            // Add "Cap" layer for walls to simulate stroke
+            if (isWall) {
+                const strokeLayerId = `${styleName}-stroke`;
+                const strokeThickness = 0.1; // 10cm stroke
+                const zFightingOffset = 0.02; // Small offset to lift it off the wall top
+                // Use Outline color from theme, or fallback to a subtle highlight if not defined
+                const strokeColor = this.themeColors.Outline || '#505050';
+
+                this.map.addLayer({
+                    id: strokeLayerId,
+                    type: 'fill-extrusion',
+                    source: styleName, // Use same source
+                    minzoom: layerMinZoom,
+                    paint: {
+                        'fill-extrusion-color': strokeColor,
+                        'fill-extrusion-height': layerHeight + strokeThickness + zFightingOffset,
+                        'fill-extrusion-base': layerHeight + zFightingOffset,
+                        'fill-extrusion-opacity': 1.0, // Solid opacity for the stroke
+                        'fill-extrusion-vertical-gradient': false // Flat color for stroke look
+                    }
+                });
+                this.mvfLayerIds.add(strokeLayerId);
+            }
+        }
+
+        // Add interaction handlers for room polygons
+        if (!isWall && !styleName.includes('Walls')) {
+            this.map.on('click', styleName, (e) => {
+                if (e.features.length > 0) {
+                    const feature = e.features[0];
+                    const id = feature.id;
+                    const propsId = feature.properties.id;
+
+                    // Restrict interaction to named rooms
+                    if (!this.locationMap || !this.locationMap.has(propsId)) {
+                        return;
+                    }
+
+                    // Update selected state
+                    if (this.selectedStateId && this.selectedStateId.id === id && this.selectedStateId.source === styleName) {
+                        // Toggle off if clicking the same feature
+                        this.map.setFeatureState(
+                            { source: styleName, id: id },
+                            { selected: false }
+                        );
+                        this.selectedStateId = null;
+                        // Dispatch deselection event
+                        window.dispatchEvent(new CustomEvent('location-deselected'));
+                        return; // Stop here, don't trigger 'location-clicked' for deselection
+                    } else {
+                        // Deselect previous if different
+                        if (this.selectedStateId) {
+                            this.map.setFeatureState(
+                                { source: this.selectedStateId.source, id: this.selectedStateId.id },
+                                { selected: false }
+                            );
+                        }
+                        // Select new
+                        this.selectedStateId = { source: styleName, id: id };
+                        this.map.setFeatureState(
+                            { source: styleName, id: id },
+                            { selected: true }
+                        );
+                    }
+
+                    // Check if clicked feature is a known location for directions
+                    if (this.locationMap && this.locationMap.has(propsId)) {
+                        const locationFn = this.locationMap.get(propsId);
+
+                        // Dispatch event for DirectionsUI
+                        window.dispatchEvent(new CustomEvent('location-clicked', {
+                            detail: {
+                                name: locationFn.name,
+                                coords: locationFn.coords,
+                                floorId: locationFn.floorId,
+                                locationId: propsId
+                            }
+                        }));
+                    }
+                }
+            });
+
+            // Hover effects
+            this.map.on('mousemove', styleName, (e) => {
+                if (e.features.length > 0) {
+                    const feature = e.features[0];
+                    const id = feature.id;
+                    const propsId = feature.properties.id;
+
+                    // Restrict interaction to named rooms
+                    if (!this.locationMap || !this.locationMap.has(propsId)) {
+                        if (this.hoveredStateId) {
+                            this.map.setFeatureState(
+                                { source: this.hoveredStateId.source, id: this.hoveredStateId.id },
+                                { hover: false }
+                            );
+                            this.hoveredStateId = null;
+                        }
+                        this.map.getCanvas().style.cursor = '';
+                        return;
+                    }
+
+                    if (this.hoveredStateId && (this.hoveredStateId.id !== id || this.hoveredStateId.source !== styleName)) {
+                        this.map.setFeatureState(
+                            { source: this.hoveredStateId.source, id: this.hoveredStateId.id },
+                            { hover: false }
+                        );
+                    }
+                    this.hoveredStateId = { source: styleName, id: id };
+                    this.map.setFeatureState(
+                        { source: styleName, id: id },
+                        { hover: true }
+                    );
+
+                    if (this.locationMap && this.locationMap.has(propsId)) {
+                        this.map.getCanvas().style.cursor = 'pointer';
+                    }
+                }
+            });
+
+            this.map.on('mouseleave', styleName, () => {
+                if (this.hoveredStateId) {
+                    this.map.setFeatureState(
+                        { source: this.hoveredStateId.source, id: this.hoveredStateId.id },
+                        { hover: false }
+                    );
+                }
+                this.hoveredStateId = null;
+                this.map.getCanvas().style.cursor = '';
+            });
         }
     },
 
@@ -221,21 +377,37 @@ export const baseLayers = {
 
     addLabels(locations, geometry) {
         const labelFeatures = [];
+
+        // Initialize location map for lookup
+        if (!this.locationMap) {
+            this.locationMap = new Map();
+        }
+
         locations.forEach(loc => {
             if (loc.details && loc.details.name && loc.geometryAnchors && loc.geometryAnchors.length > 0) {
                 const geoId = loc.geometryAnchors[0].geometryId;
                 const floorId = loc.geometryAnchors[0].floorId;
+
                 const feature = geometry.features.find(f => f.properties.id === geoId);
                 if (feature) {
                     const centroid = getCentroid(feature.geometry);
                     if (centroid) {
+                        // Add to label features
                         labelFeatures.push({
                             type: 'Feature',
                             geometry: { type: 'Point', coordinates: centroid },
                             properties: {
                                 name: loc.details.name,
-                                floorId: floorId
+                                floorId: floorId,
+                                id: geoId // Store UUID for lookup
                             }
+                        });
+
+                        // Populate location map
+                        this.locationMap.set(geoId, {
+                            name: loc.details.name,
+                            coords: centroid,
+                            floorId: floorId
                         });
                     }
                 }
@@ -257,7 +429,7 @@ export const baseLayers = {
                     'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
                     'text-size': 12,
                     'text-anchor': 'center',
-                    'text-offset': [0, 0]
+                    'text-offset': [0, -1.5] // Offset text slightly above the node
                 },
                 paint: {
                     'text-color': '#ffffff',
@@ -273,13 +445,49 @@ export const baseLayers = {
                 const coords = feature.geometry.coordinates.slice();
                 const name = feature.properties.name;
                 const floorId = feature.properties.floorId;
+                const propsId = feature.properties.id; // UUID
+
+                // Trigger Room Selection Logic if mapped
+                if (propsId && this.roomStateMap.has(propsId)) {
+                    const roomState = this.roomStateMap.get(propsId);
+                    const source = roomState.source;
+                    const id = roomState.id;
+
+                    // Update selected state (Duplicate logic from createStyleLayer)
+                    if (this.selectedStateId && this.selectedStateId.id === id && this.selectedStateId.source === source) {
+                        // Toggle off
+                        this.map.setFeatureState(
+                            { source: source, id: id },
+                            { selected: false }
+                        );
+                        this.selectedStateId = null;
+                        // Dispatch deselection event
+                        window.dispatchEvent(new CustomEvent('location-deselected'));
+                        return; // Stop here to simulate toggle off behavior
+                    } else {
+                        // Deselect previous
+                        if (this.selectedStateId) {
+                            this.map.setFeatureState(
+                                { source: this.selectedStateId.source, id: this.selectedStateId.id },
+                                { selected: false }
+                            );
+                        }
+                        // Select new
+                        this.selectedStateId = { source: source, id: id };
+                        this.map.setFeatureState(
+                            { source: source, id: id },
+                            { selected: true }
+                        );
+                    }
+                }
 
                 // Dispatch event for DirectionsUI
                 window.dispatchEvent(new CustomEvent('location-clicked', {
                     detail: {
                         name: name,
                         coords: coords,
-                        floorId: floorId
+                        floorId: floorId,
+                        locationId: propsId
                     }
                 }));
             });

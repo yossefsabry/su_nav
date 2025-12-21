@@ -1,6 +1,7 @@
 
 
-Think of them as "Google Maps for the indoors." While GPS works great for finding a building, it often fails once you're inside a complex structure like a mall or an airport. That’s the problem Mappedin solves.
+Think of them as "Google Maps for the indoors." While GPS works great for finding a building,
+it often fails once you're inside a complex structure like a mall or an airport. That’s the problem Mappedin solves.
 
 
 1. The "Graph" (The Hidden Web)
@@ -24,3 +25,5 @@ If a person just followed nodes, the path might look "zig-zaggy" or robotic. Map
 
 4. Special Constraints (Accessibility)
 Mappedin's node system is "tagged." If you toggle "Accessible Route," the algorithm temporarily "deletes" or ignores any edges that represent stairs. It then re-calculates the path using only "Elevator" or "Ramp" nodes.
+
+

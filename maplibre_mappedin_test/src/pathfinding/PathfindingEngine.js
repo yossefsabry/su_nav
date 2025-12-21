@@ -19,7 +19,7 @@ export class PathfindingEngine {
     /**
      * Initialize the pathfinding engine with MVF data
      */
-    async initialize(nodeFeatures, geometry, connections, walkableData, nonwalkableData, kindsData) {
+    async initialize(nodeFeatures, geometry, connections, walkableData, nonwalkableData, kindsData, entranceNodesData = null) {
         console.log('🚀 Initializing Pathfinding Engine...');
 
         // 1. Initialize collision detector
@@ -28,6 +28,8 @@ export class PathfindingEngine {
 
         // 2. Load nodes into graph
         console.log('Step 2: Loading nodes into graph...');
+
+        // Load standard pathfinding nodes
         nodeFeatures.forEach(feature => {
             const id = feature.properties.id;
             const coords = feature.geometry.coordinates;
@@ -38,6 +40,30 @@ export class PathfindingEngine {
                 type: 'waypoint'
             });
         });
+
+        // Load entrance nodes if provided
+        if (entranceNodesData && entranceNodesData.features) {
+            console.log(`  Loading ${entranceNodesData.features.length} entrance nodes...`);
+            entranceNodesData.features.forEach(feature => {
+                // Use geometryId or generate a unique ID
+                const id = feature.properties.geometryId || feature.id || `entrance_${Math.random().toString(36).substr(2, 9)}`;
+                const coords = feature.geometry.coordinates;
+                // Entrance nodes might not have floorId in properties if raw geojson, check struct
+                // Based on standard geojson features from extractors, they should have it or we infer it
+                // We'll rely on it being present or handled upstream. 
+                // However, based on mvf-loader, we might need to ensure floorId is there. 
+                // If not present in properties, we can try to find nearest floor or assume checks done.
+                // Assuming well-formed data from script.js injection:
+                const floorId = feature.properties.floorId;
+
+                if (floorId) {
+                    this.graph.addNode(id, coords, floorId, {
+                        type: 'entrance',
+                        ...feature.properties
+                    });
+                }
+            });
+        }
 
         console.log(`  Loaded ${this.graph.nodes.size} nodes`);
 

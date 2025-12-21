@@ -494,7 +494,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-    margin: 30px;
+  margin: 30px;
   /* Prevent content from overflowing */
 }
 
@@ -699,11 +699,6 @@ body {
 /* Annotation Icon Styles - Simple and Clean */
 .maplibregl-marker.annotation-marker {
   cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.maplibregl-marker.annotation-marker:hover {
-  transform: scale(1.15);
 }
 
 .maplibregl-marker.annotation-marker.primary-entrance svg {

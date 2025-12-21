@@ -190,10 +190,11 @@ async function initApp() {
     }
 
     // 6i. Load and display Entrance-Aesthetic Nodes
+    let entranceAestheticNodesData = null;
     try {
       const response = await fetch('/assets/entrance_aesthetic_nodes.geojson');
       if (response.ok) {
-        const entranceAestheticNodesData = await response.json();
+        entranceAestheticNodesData = await response.json();
         layerManager.addEntranceAestheticNodes(entranceAestheticNodesData);
       } else {
         console.warn('Failed to load entrance_aesthetic_nodes.geojson');
@@ -284,14 +285,20 @@ async function initApp() {
         connections,
         walkableIds,
         nonwalkableIds,
-        kindsData
+        kindsData,
+        entranceAestheticNodesData // Pass entrance nodes to pathfinding engine
       );
 
       console.log('✅ Pathfinding System Ready!');
 
       // Initialize DirectionsUI
       const directionsUI = new DirectionsUI(map, pathfindingEngine, pathRenderer);
-      directionsUI.initialize(floors[0].id); // Start with first floor
+
+      // Fix: Ensure we use the correct floor property
+      // floors[0] is a GeoJSON feature, so we need floors[0].properties.id
+      const initialFloorId = floors[0].properties ? floors[0].properties.id : floors[0].id;
+
+      directionsUI.initialize(initialFloorId); // Start with first floor
 
       // Update current floor when floor changes
       window.addEventListener('floor-changed', (e) => {

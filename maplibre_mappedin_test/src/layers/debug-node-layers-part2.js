@@ -181,11 +181,11 @@ export const debugNodesPart2 = {
                 source: sourceId,
                 minzoom: this.MIN_ZOOM_INDOOR,
                 paint: {
-                    'circle-radius': 4,
-                    'circle-color': '#800080',
-                    'circle-stroke-width': 2,
+                    'circle-radius': 3,
+                    'circle-color': '#2E8B57', // SeaGreen for Outdoors
+                    'circle-stroke-width': 1.5,
                     'circle-stroke-color': '#ffffff',
-                    'circle-opacity': 0.8
+                    'circle-opacity': 0.9
                 }
             });
             this.mvfLayerIds.add(layerId);
@@ -198,7 +198,7 @@ export const debugNodesPart2 = {
                 new maplibregl.Popup()
                     .setLngLat(coordinates)
                     .setHTML(`
-                        <strong>Type:</strong> Entrance Aesthetic<br>
+                        <strong>Type:</strong> Outdoor Entrance<br>
                         <strong>Kind:</strong> ${props.kind}<br>
                         <strong>Entrance ID:</strong> ${props.entranceId}<br>
                         <strong>Geometry ID:</strong> ${props.geometryId}<br>
@@ -206,7 +206,6 @@ export const debugNodesPart2 = {
                     `)
                     .addTo(this.map);
             });
-
             this.map.on('mouseenter', layerId, () => {
                 this.map.getCanvas().style.cursor = 'pointer';
             });
@@ -234,9 +233,9 @@ export const debugNodesPart2 = {
                 source: sourceId,
                 minzoom: this.MIN_ZOOM_INDOOR,
                 paint: {
-                    'circle-radius': 5,
+                    'circle-radius': 3,
                     'circle-color': '#FFD700',
-                    'circle-stroke-width': 2,
+                    'circle-stroke-width': 1.5,
                     'circle-stroke-color': '#ffffff',
                     'circle-opacity': 0.9
                 }
