@@ -40,7 +40,7 @@ export class CollisionDetector {
                 if (feature.geometry.type === 'LineString') {
                     // Buffer line to create a polygon
                     try {
-                        obstaclePolygon = turf.buffer(feature, 0.1, { units: 'meters' });
+                        obstaclePolygon = turf.buffer(feature, 0.5, { units: 'meters' });
                     } catch (e) {
                         console.warn('Failed to buffer line geometry:', e);
                         return;

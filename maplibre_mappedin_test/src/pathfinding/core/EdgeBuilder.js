@@ -13,9 +13,9 @@ export class EdgeBuilder {
      * Build edges for all nodes on a floor using visibility graph
      * Only connects nodes that have line-of-sight (no wall collisions)
      */
-    buildEdgesForFloor(nodes, floorId, maxDistance = 0.0003) {
+    buildEdgesForFloor(nodes, floorId, maxDistance = 15) {
         const edges = [];
-        console.log(`Building edges for floor ${floorId} with ${nodes.length} nodes...`);
+        console.log(`Building edges for floor ${floorId} with ${nodes.length} nodes (maxDist: ${maxDistance}m)...`);
 
         // For each pair of nodes
         for (let i = 0; i < nodes.length; i++) {

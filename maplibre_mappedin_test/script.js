@@ -21,6 +21,26 @@ async function initApp() {
   const mvfData = await loadMVFBundle('/assets/my_data.zip');
   const { manifest, styles, locations, floors, entranceIds, entranceGeometryToFloorMap, geometry, connections } = mvfData;
 
+  // AUGMENT SEARCH INDEX: Scan all geometry for names (e.g. "Room 1000") that might be missing from locations.json
+  const existingNames = new Set(locations.map(l => l.details?.name));
+
+  if (geometry && geometry.features) {
+    geometry.features.forEach(feature => {
+      const props = feature.properties;
+      if (props && props.name && !existingNames.has(props.name)) {
+        // Create a synthetic location object
+        locations.push({
+          details: { name: props.name },
+          geometryAnchors: [{
+            geometryId: props.id,
+            floorId: props.floorId
+          }]
+        });
+        existingNames.add(props.name); // Prevent duplicates from multiple geometry parts
+      }
+    });
+  }
+
   // 2. Initialize Map
   const center = manifest.features?.[0]?.geometry?.coordinates || [0, 0];
   const themeColors = starlightTheme.colors;
@@ -310,24 +330,20 @@ async function initApp() {
     }
 
 
-    // 6b. Debug Nodes removed per user request
-
-    /*
-    const debugCategories = {
-      'walkable': { ids: mvfData.walkableIds, color: '#00FF00' },
-      'nonwalkable': { ids: mvfData.nonwalkableIds, color: '#FFA500' },
-      'kinds': { ids: mvfData.kindsIds, color: '#0000FF' },
-      'entrance-aesthetic': { ids: mvfData.entranceAestheticIds, color: '#800080' },
-      'annotations': { ids: mvfData.annotationsIds, color: '#00FFFF' },
-      'locations': { ids: mvfData.locationsIds, color: '#FFFF00' },
-      'geometry': { ids: mvfData.geometryIds, color: '#808080' }
-    };
-    layerManager.addDebugNodes(debugCategories, geometry);
-    */
+    // 6b. Debug Nodes removed per user request (User: "Delete all debug nodes")
 
     // 7. Setup Pathfinding
     const pathfinder = new Pathfinder();
     pathfinder.load(nodeFeatures, connections);
+
+    // EXPOSE FOR DEBUGGING
+    window.pathfindingEngine = pathfindingEngine;
+
+    // Run Verification Suite
+    import('./src/pathfinding/verification_script.js').then(({ runVerification }) => {
+      // Run after a short delay to ensure everything is settled
+      setTimeout(() => runVerification(pathfindingEngine), 2000);
+    });
 
     // 8. Setup Interaction
     const interactionManager = new InteractionManager(map, pathfinder, layerManager);
@@ -336,6 +352,12 @@ async function initApp() {
     // 9. Setup UI
     const uiManager = new UIManager(map, layerManager, floors);
     uiManager.init();
+
+    // 9b. Setup Search Bar
+    import('./src/ui/SearchBox.js').then(({ SearchBox }) => {
+      const searchBox = new SearchBox(map, layerManager, locations);
+      searchBox.init();
+    });
 
     // 10. Setup Legend Toggle (with localStorage persistence)
     const legendToggleManager = new LegendToggleManager(layerManager);

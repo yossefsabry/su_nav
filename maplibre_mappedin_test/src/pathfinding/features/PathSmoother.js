@@ -10,8 +10,8 @@ export class PathSmoother {
      */
     smoothPath(pathCoords, options = {}) {
         const {
-            resolution = 10000, // Points per segment
-            sharpness = 0.5 // 0 = very smooth, 1 = sharp
+            resolution = 20000, // Higher resolution for silkier curves
+            sharpness = 0.4 // Lower sharpness for more natural flow
         } = options;
 
         if (pathCoords.length < 2) {

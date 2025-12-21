@@ -27,3 +27,5 @@ If a person just followed nodes, the path might look "zig-zaggy" or robotic. Map
 Mappedin's node system is "tagged." If you toggle "Accessible Route," the algorithm temporarily "deletes" or ignores any edges that represent stairs. It then re-calculates the path using only "Elevator" or "Ramp" nodes.
 
 
+1. gone adding a game system like moving with the keys on the map so i want 
+to handle and moving

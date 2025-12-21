@@ -195,22 +195,41 @@ export const baseLayers = {
             // Add "Cap" layer for walls to simulate stroke
             if (isWall) {
                 const strokeLayerId = `${styleName}-stroke`;
+                const strokeSourceId = `${styleName}-stroke-source`;
                 const strokeThickness = 0.1; // 10cm stroke
-                const zFightingOffset = 0.02; // Small offset to lift it off the wall top
-                // Use Outline color from theme, or fallback to a subtle highlight if not defined
-                const strokeColor = this.themeColors.Outline || '#505050';
+                const zFightingOffset = 0.005; // Minimal offset needed since we are buffering
+
+                // Create buffered features for the cap to avoid z-fighting on sides
+                // and give a nice 'capstone' look. Increased steps for smoothness.
+                const strokeFeatures = features.map(f => {
+                    try {
+                        const buffered = turf.buffer(f, 0.05, { units: 'meters', steps: 32 });
+                        buffered.properties = f.properties;
+                        return buffered;
+                    } catch (e) {
+                        return f;
+                    }
+                });
+
+                this.map.addSource(strokeSourceId, {
+                    type: 'geojson',
+                    data: { type: 'FeatureCollection', features: strokeFeatures }
+                });
+
+                // User requested "little dark but not that deep dark" -> Soft Charcoal
+                const strokeColor = '#1A1A1A';
 
                 this.map.addLayer({
                     id: strokeLayerId,
                     type: 'fill-extrusion',
-                    source: styleName, // Use same source
+                    source: strokeSourceId, // Use specific buffered source
                     minzoom: layerMinZoom,
                     paint: {
                         'fill-extrusion-color': strokeColor,
                         'fill-extrusion-height': layerHeight + strokeThickness + zFightingOffset,
-                        'fill-extrusion-base': layerHeight + zFightingOffset,
-                        'fill-extrusion-opacity': 1.0, // Solid opacity for the stroke
-                        'fill-extrusion-vertical-gradient': false // Flat color for stroke look
+                        'fill-extrusion-base': layerHeight, // Sit directly on top (or slightly inside if we want)
+                        'fill-extrusion-opacity': 1.0,
+                        'fill-extrusion-vertical-gradient': false
                     }
                 });
                 this.mvfLayerIds.add(strokeLayerId);

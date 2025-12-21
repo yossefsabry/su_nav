@@ -10,6 +10,7 @@ export class UIManager {
     init() {
         this.createFloorControls();
         this.setupZoomListener();
+        this.setupExternalListeners();
         // Initial update
         this.layerManager.updateFloorVisibility(this.currentFloorId);
     }
@@ -64,5 +65,37 @@ export class UIManager {
 
         this.map.on('zoom', checkZoom);
         checkZoom();
+    }
+
+    setupExternalListeners() {
+        window.addEventListener('floor-changed', (e) => {
+            const newFloorId = e.detail.floorId;
+            if (newFloorId && newFloorId !== this.currentFloorId) {
+                this.currentFloorId = newFloorId;
+
+                // Update UI Buttons
+                const container = document.getElementById('floor-controls');
+                const buttons = container.getElementsByTagName('button');
+                Array.from(buttons).forEach(btn => {
+                    // Logic to match button to floor.
+                    // We need to re-find the button or re-render.
+                    // Easiest is to check text or store ID on button.
+                    // Let's iterate floors to find index or ID.
+                });
+
+                // Better: Re-render controls or just find the one with correct index/ID?
+                // Given createFloorControls logic above didn't store IDs on buttons explicitly,
+                // let's just re-trigger the click logic or update classes manually.
+
+                // Refactoring createFloorControls to assign IDs to buttons would be cleaner,
+                // but for now let's just iterate and match.
+
+                // Refresh controls entirely to be safe and simple
+                this.createFloorControls();
+
+                // Update map
+                this.layerManager.updateFloorVisibility(this.currentFloorId);
+            }
+        });
     }
 }

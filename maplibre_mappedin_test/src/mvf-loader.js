@@ -99,8 +99,28 @@ export async function loadMVFBundle(url) {
 
     // All Geometry IDs (for catch-all visualization)
     const geometryIds = new Set();
-    if (geometry.features) {
-        geometry.features.forEach(f => geometryIds.add(f.properties.id));
+
+    // AUGMENT LOCATIONS: Scan all geometry for names (e.g. "Room 1000")
+    // This ensures search finds everything, even if not in locations.json
+    const existingNames = new Set(locations.map(l => l.details?.name));
+
+    if (allFeatures) {
+        allFeatures.forEach(feature => {
+            const props = feature.properties;
+            geometryIds.add(props.id); // Track ID
+
+            if (props && props.name && !existingNames.has(props.name)) {
+                // Create a synthetic location object
+                locations.push({
+                    details: { name: props.name },
+                    geometryAnchors: [{
+                        geometryId: props.id,
+                        floorId: props.floorId
+                    }]
+                });
+                existingNames.add(props.name);
+            }
+        });
     }
 
     return {
