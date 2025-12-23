@@ -51,7 +51,7 @@ export function ChatEmptyState() {
             <View style={styles.features}>
                 <View style={styles.featureItem}>
                     <View style={[styles.featureIcon, { backgroundColor: colors.primary + '15' }]}>
-                        <Ion icons name="sparkles" size={20} color={colors.primary} />
+                        <Ionicons name="sparkles" size={20} color={colors.primary} />
                     </View>
                     <Text style={[styles.featureText, { color: colors.secondaryText }]}>
                         AI-powered

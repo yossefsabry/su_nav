@@ -20,9 +20,10 @@ interface ChatConversationProps {
     chatId: string;
     chatName: string;
     onMessagesUpdate?: () => void; // Callback when messages change
+    onChatCreated?: (newChatId: string) => void;
 }
 
-export default function ChatConversation({ chatId, chatName, onMessagesUpdate }: ChatConversationProps) {
+export default function ChatConversation({ chatId, chatName, onMessagesUpdate, onChatCreated }: ChatConversationProps) {
     const { colors } = useTheme();
     const insets = useSafeAreaInsets();
     const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -33,7 +34,11 @@ export default function ChatConversation({ chatId, chatName, onMessagesUpdate }:
 
     // Load messages from storage when chat changes
     useEffect(() => {
-        loadMessages();
+        if (chatId === 'new') {
+            setMessages([]);
+        } else {
+            loadMessages();
+        }
     }, [chatId]);
 
     const loadMessages = async () => {
@@ -52,7 +57,7 @@ export default function ChatConversation({ chatId, chatName, onMessagesUpdate }:
         }
     };
 
-    const simulateAIResponse = async (userMessage: string) => {
+    const simulateAIResponse = async (userMessage: string, targetChatId: string) => {
         setIsAITyping(true);
 
         // Simulate thinking time
@@ -73,9 +78,16 @@ export default function ChatConversation({ chatId, chatName, onMessagesUpdate }:
             timestamp: new Date().toISOString(),
         };
 
-        await chatStorage.addMessage(chatId, aiMessage);
+        await chatStorage.addMessage(targetChatId, aiMessage);
         setIsAITyping(false);
-        await loadMessages();
+
+        // Only reload if we are still on the same chat
+        // (In a real app we might rely on props update, but here we force reload)
+        const currentChat = await chatStorage.getChatById(targetChatId);
+        if (currentChat) {
+            setMessages(currentChat.messages);
+        }
+
         onMessagesUpdate?.();
 
         // Scroll to bottom
@@ -95,9 +107,32 @@ export default function ChatConversation({ chatId, chatName, onMessagesUpdate }:
         };
 
         try {
-            await chatStorage.addMessage(chatId, userMessage);
+            let targetChatId = chatId;
+
+            // Create new chat if needed
+            if (chatId === 'new') {
+                // Generate a name based on first message or default
+                const newChatName = userMessage.text.length > 30
+                    ? userMessage.text.substring(0, 30) + '...'
+                    : userMessage.text;
+
+                const newChat = await chatStorage.createChat(newChatName);
+                targetChatId = newChat.id;
+
+                // Notify parent immediately so UI can update URL or state
+                onChatCreated?.(targetChatId);
+            }
+
+            await chatStorage.addMessage(targetChatId, userMessage);
             setInputText('');
-            await loadMessages();
+
+            // Update local state immediately for better UX
+            if (chatId === 'new') {
+                setMessages([userMessage]);
+            } else {
+                await loadMessages();
+            }
+
             onMessagesUpdate?.();
 
             // Scroll to bottom
@@ -106,7 +141,7 @@ export default function ChatConversation({ chatId, chatName, onMessagesUpdate }:
             }, 100);
 
             // Simulate AI response
-            await simulateAIResponse(userMessage.text);
+            await simulateAIResponse(userMessage.text, targetChatId);
         } catch (error) {
             console.error('Error sending message:', error);
         }
@@ -205,6 +240,9 @@ export default function ChatConversation({ chatId, chatName, onMessagesUpdate }:
                         multiline
                         maxLength={500}
                         editable={!isAITyping}
+                        returnKeyType="send"
+                        blurOnSubmit={false}
+                        onSubmitEditing={handleSend}
                     />
                     <TouchableOpacity
                         style={[styles.sendButton, { backgroundColor: inputText.trim() && !isAITyping ? colors.text : colors.border }]}

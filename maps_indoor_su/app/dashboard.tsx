@@ -12,23 +12,34 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { PresenceCard } from '@/components/dashboard/PresenceCard';
+import { AttendanceChart } from '@/components/dashboard/AttendanceChart';
 
 const { width } = Dimensions.get('window');
 
 export default function DashboardScreen() {
     const { colors } = useTheme();
 
-    const stats = [
-        { id: '1', title: 'Total Routes', value: '42', icon: 'navigate', color: '#007AFF', gradient: ['#007AFF', '#0051D5'] },
-        { id: '2', title: 'Distance Walked', value: '3.2 km', icon: 'walk', color: '#34C759', gradient: ['#34C759', '#248A3D'] },
-        { id: '3', title: 'Time Saved', value: '2.5 hrs', icon: 'time', color: '#FF9500', gradient: ['#FF9500', '#FF6B00'] },
-        { id: '4', title: 'Favorite Places', value: '15', icon: 'heart', color: '#FF3B30', gradient: ['#FF3B30', '#C7200E'] },
+    // Mock Data
+    const attendanceStats = {
+        total: 48,
+        attended: 42,
+        missed: 6,
+        late: 2
+    };
+
+    const academicStats = [
+        { id: '1', title: 'Total Classes', value: '48', icon: 'school', color: '#007AFF', gradient: ['#007AFF', '#0051D5'] },
+        { id: '2', title: 'Assignments', value: '12 Due', icon: 'document-text', color: '#FF9500', gradient: ['#FF9500', '#FF6B00'] },
+        { id: '3', title: 'Current GPA', value: '3.8', icon: 'ribbon', color: '#AF52DE', gradient: ['#AF52DE', '#8E44AD'] }, // Replaced Time Saved
+        { id: '4', title: 'Late Arrivals', value: '2', icon: 'alarm', color: '#FF3B30', gradient: ['#FF3B30', '#C7200E'] },
     ];
 
-    const recentActivity = [
-        { id: '1', title: 'Engineering Building', subtitle: 'Navigation completed', time: '2h ago', icon: 'location' },
-        { id: '2', title: 'Library - Floor 3', subtitle: 'Route saved', time: '5h ago', icon: 'bookmark' },
-        { id: '3', title: 'Student Center', subtitle: 'Check-in', time: 'Yesterday', icon: 'checkmark-circle' },
+    const recentAttendance = [
+        { id: '1', subject: 'Computer Science 101', status: 'Present', time: 'Today, 10:00 AM', icon: 'checkmark-circle', color: '#34C759' },
+        { id: '2', subject: 'Calculus II', status: 'Late', time: 'Yesterday, 02:00 PM', icon: 'time', color: '#FF9500' },
+        { id: '3', subject: 'Physics Lab', status: 'Absent', time: 'Monday, 09:00 AM', icon: 'close-circle', color: '#FF3B30' },
+        { id: '4', subject: 'English Lit', status: 'Present', time: 'Monday, 11:30 AM', icon: 'checkmark-circle', color: '#34C759' },
     ];
 
     return (
@@ -39,38 +50,58 @@ export default function DashboardScreen() {
                     <TouchableOpacity onPress={() => router.back()}>
                         <Ionicons name="chevron-back" size={28} color={colors.text} />
                     </TouchableOpacity>
-                    <Text style={[styles.headerTitle, { color: colors.text }]}>Dashboard</Text>
+                    <Text style={[styles.headerTitle, { color: colors.text }]}>Attendance Dashboard</Text>
                     <TouchableOpacity>
-                        <Ionicons name="filter-outline" size={24} color={colors.text} />
+                        <Ionicons name="ellipsis-horizontal" size={24} color={colors.text} />
                     </TouchableOpacity>
                 </View>
 
-                {/* Stats Grid */}
-                <View style={styles.statsGrid}>
-                    {stats.map((stat) => (
-                        <View key={stat.id} style={styles.statCard}>
-                            <LinearGradient
-                                colors={stat.gradient as any}
-                                style={styles.statGradient}
-                                start={{ x: 0, y: 0 }}
-                                end={{ x: 1, y: 1 }}
-                            >
-                                <Ionicons name={stat.icon as any} size={32} color="#fff" />
-                                <Text style={styles.statValue}>{stat.value}</Text>
-                                <Text style={styles.statTitle}>{stat.title}</Text>
-                            </LinearGradient>
-                        </View>
-                    ))}
+                {/* Presence Status */}
+                <PresenceCard
+                    isOnCampus={true} // Mocked for dashboard demo
+                    locationName="Sinai University - Main Campus"
+                />
+
+                {/* Overall Analysis */}
+                <AttendanceChart
+                    totalLectures={attendanceStats.total}
+                    attendedLectures={attendanceStats.attended}
+                />
+
+                {/* Academic Stats Grid */}
+                <View style={styles.section}>
+                    <Text style={[styles.sectionTitle, { color: colors.text }]}>Overview</Text>
+                    <View style={styles.statsGrid}>
+                        {academicStats.map((stat) => (
+                            <View key={stat.id} style={styles.statCard}>
+                                <LinearGradient
+                                    colors={stat.gradient as any}
+                                    style={styles.statGradient}
+                                    start={{ x: 0, y: 0 }}
+                                    end={{ x: 1, y: 1 }}
+                                >
+                                    <View style={styles.statHeader}>
+                                        <Ionicons name={stat.icon as any} size={24} color="#fff" />
+                                    </View>
+                                    <Text style={styles.statValue}>{stat.value}</Text>
+                                    <Text style={styles.statTitle}>{stat.title}</Text>
+                                </LinearGradient>
+                            </View>
+                        ))}
+                    </View>
                 </View>
 
-                {/* Weekly Progress */}
+                {/* Weekly Attendance Trend */}
                 <View style={styles.section}>
-                    <Text style={[styles.sectionTitle, { color: colors.text }]}>Weekly Activity</Text>
+                    <Text style={[styles.sectionTitle, { color: colors.text }]}>Weekly Attendance</Text>
                     <View style={[styles.card, { backgroundColor: colors.cardBackground }]}>
                         <View style={styles.chartContainer}>
-                            {[40, 65, 45, 80, 35, 90, 55].map((height, index) => (
+                            {[100, 80, 100, 60, 100, 0, 0].map((height, index) => (
                                 <View key={index} style={styles.barContainer}>
-                                    <View style={[styles.bar, { height: `${height}%`, backgroundColor: colors.primary }]} />
+                                    <View style={[styles.bar, {
+                                        height: `${Math.max(height, 5)}%`,
+                                        backgroundColor: height >= 80 ? colors.primary : (height > 0 ? colors.error : colors.border)
+                                    }]} />
                                     <Text style={[styles.barLabel, { color: colors.tertiaryText }]}>
                                         {['M', 'T', 'W', 'T', 'F', 'S', 'S'][index]}
                                     </Text>
@@ -80,19 +111,21 @@ export default function DashboardScreen() {
                     </View>
                 </View>
 
-                {/* Recent Activity */}
+                {/* Recent History */}
                 <View style={styles.section}>
-                    <Text style={[styles.sectionTitle, { color: colors.text }]}>Recent Activity</Text>
-                    {recentActivity.map((activity) => (
-                        <View key={activity.id} style={[styles.activityItem, { backgroundColor: colors.cardBackground, borderColor: colors.border }]}>
-                            <View style={[styles.activityIcon, { backgroundColor: colors.primary + '15' }]}>
-                                <Ionicons name={activity.icon as any} size={20} color={colors.primary} />
+                    <Text style={[styles.sectionTitle, { color: colors.text }]}>Recent History</Text>
+                    {recentAttendance.map((item) => (
+                        <View key={item.id} style={[styles.historyItem, { backgroundColor: colors.cardBackground, borderColor: colors.border }]}>
+                            <View style={[styles.historyIcon, { backgroundColor: item.color + '15' }]}>
+                                <Ionicons name={item.icon as any} size={20} color={item.color} />
                             </View>
-                            <View style={styles.activityContent}>
-                                <Text style={[styles.activityTitle, { color: colors.text }]}>{activity.title}</Text>
-                                <Text style={[styles.activitySubtitle, { color: colors.secondaryText }]}>{activity.subtitle}</Text>
+                            <View style={styles.historyContent}>
+                                <Text style={[styles.historySubject, { color: colors.text }]}>{item.subject}</Text>
+                                <Text style={[styles.historyTime, { color: colors.secondaryText }]}>{item.time}</Text>
                             </View>
-                            <Text style={[styles.activityTime, { color: colors.tertiaryText }]}>{activity.time}</Text>
+                            <View style={[styles.statusBadge, { backgroundColor: item.color + '20' }]}>
+                                <Text style={[styles.statusText, { color: item.color }]}>{item.status}</Text>
+                            </View>
                         </View>
                     ))}
                 </View>
@@ -119,14 +152,22 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
+    section: {
+        marginTop: 24,
+        paddingHorizontal: 20,
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 12,
+    },
     statsGrid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        paddingHorizontal: 16,
         gap: 12,
     },
     statCard: {
-        width: (width - 44) / 2,
+        width: (width - 52) / 2, // (width - 40 padding - 12 gap) / 2
         borderRadius: 16,
         overflow: 'hidden',
         shadowColor: '#000',
@@ -136,31 +177,23 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     statGradient: {
-        padding: 20,
-        alignItems: 'center',
-        minHeight: 140,
-        justifyContent: 'center',
+        padding: 16,
+        height: 110,
+        justifyContent: 'space-between',
+    },
+    statHeader: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
     },
     statValue: {
-        fontSize: 28,
+        fontSize: 24,
         fontWeight: 'bold',
         color: '#fff',
-        marginTop: 8,
     },
     statTitle: {
         fontSize: 13,
         color: 'rgba(255,255,255,0.9)',
-        marginTop: 4,
-        textAlign: 'center',
-    },
-    section: {
-        marginTop: 24,
-        paddingHorizontal: 20,
-    },
-    sectionTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 12,
+        fontWeight: '500',
     },
     card: {
         borderRadius: 16,
@@ -175,7 +208,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
-        height: 150,
+        height: 120,
     },
     barContainer: {
         flex: 1,
@@ -183,15 +216,14 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     bar: {
-        width: '60%',
+        width: 8,
         borderRadius: 4,
-        minHeight: 20,
     },
     barLabel: {
         marginTop: 8,
         fontSize: 12,
     },
-    activityItem: {
+    historyItem: {
         flexDirection: 'row',
         alignItems: 'center',
         padding: 16,
@@ -199,7 +231,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 8,
     },
-    activityIcon: {
+    historyIcon: {
         width: 40,
         height: 40,
         borderRadius: 20,
@@ -207,18 +239,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginRight: 12,
     },
-    activityContent: {
+    historyContent: {
         flex: 1,
     },
-    activityTitle: {
+    historySubject: {
         fontSize: 16,
         fontWeight: '600',
         marginBottom: 2,
     },
-    activitySubtitle: {
-        fontSize: 14,
+    historyTime: {
+        fontSize: 12,
     },
-    activityTime: {
-        fontSize: 13,
+    statusBadge: {
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+        borderRadius: 8,
+    },
+    statusText: {
+        fontSize: 12,
+        fontWeight: 'bold',
     },
 });

@@ -69,8 +69,9 @@ export default function ChatList({ onSelectChat, currentChatId, onRefreshTrigger
     };
 
     const getAvatarIcon = (chat: Chat): string => {
-        // AI chat gets robot icon, others get chat bubble
-        if (chat.name.toLowerCase().includes('chatsu') || chat.name.toLowerCase().includes('ai')) {
+        // AI/SU chat gets robot icon, others get chat bubble
+        const lowerName = chat.name.toLowerCase();
+        if (lowerName.includes('chatsu') || lowerName.includes('ai') || lowerName.includes('su') || lowerName.includes('assistant')) {
             return '🤖';
         }
         return '💬';

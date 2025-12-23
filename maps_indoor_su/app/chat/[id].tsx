@@ -1,120 +1,59 @@
 import { useTheme } from '@/contexts/theme-context';
 import { Ionicons } from '@expo/vector-icons';
 import { router, useLocalSearchParams } from 'expo-router';
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-    FlatList,
+    ActivityIndicator,
     KeyboardAvoidingView,
     Platform,
     StyleSheet,
     Text,
-    TextInput,
     TouchableOpacity,
     View,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-
-interface Message {
-    id: string;
-    text: string;
-    sender: 'user' | 'other';
-    timestamp: string;
-}
-
-// Mock messages
-const MOCK_MESSAGES: Message[] = [
-    {
-        id: '1',
-        text: 'Hello! How can I help you navigate the campus today?',
-        sender: 'other',
-        timestamp: '10:23 AM',
-    },
-    {
-        id: '2',
-        text: 'I need to find the Engineering building',
-        sender: 'user',
-        timestamp: '10:24 AM',
-    },
-    {
-        id: '3',
-        text: 'Sure! The Engineering building is located on the north side of campus. Would you like me to create a route for you?',
-        sender: 'other',
-        timestamp: '10:24 AM',
-    },
-    {
-        id: '4',
-        text: 'Yes please!',
-        sender: 'user',
-        timestamp: '10:25 AM',
-    },
-    {
-        id: '5',
-        text: 'Great! I\'ve created a route to the Engineering building. Tap the map icon to view it.',
-        sender: 'other',
-        timestamp: '10:25 AM',
-    },
-];
+import ChatConversation from '@/components/chat/ChatConversation';
+import { chatStorage, Chat } from '@/services/chat-storage';
 
 export default function ChatConversationScreen() {
-    const { id } = useLocalSearchParams();
+    const { id } = useLocalSearchParams<{ id: string }>();
     const { colors } = useTheme();
     const insets = useSafeAreaInsets();
-    const [messages, setMessages] = useState(MOCK_MESSAGES);
-    const [inputText, setInputText] = useState('');
-    const flatListRef = useRef<FlatList>(null);
+    const [chatName, setChatName] = useState('Chat');
+    const [isLoading, setIsLoading] = useState(true);
 
-    const handleSend = () => {
-        if (inputText.trim() === '') return;
+    useEffect(() => {
+        loadChatDetails();
+    }, [id]);
 
-        const newMessage: Message = {
-            id: Date.now().toString(),
-            text: inputText,
-            sender: 'user',
-            timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
-        };
+    const loadChatDetails = async () => {
+        if (!id || id === 'new') {
+            setChatName('New Chat');
+            setIsLoading(false);
+            return;
+        }
 
-        setMessages([...messages, newMessage]);
-        setInputText('');
-
-        // Auto-scroll to bottom
-        setTimeout(() => {
-            flatListRef.current?.scrollToEnd({ animated: true });
-        }, 100);
+        try {
+            const chat = await chatStorage.getChatById(id);
+            if (chat) {
+                setChatName(chat.name);
+            }
+        } catch (error) {
+            console.error('Error loading chat details:', error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
-    const renderMessage = ({ item }: { item: Message }) => {
-        const isUser = item.sender === 'user';
-
-        return (
-            <View style={[styles.messageContainer, isUser && styles.userMessageContainer]}>
-                <View
-                    style={[
-                        styles.messageBubble,
-                        {
-                            backgroundColor: isUser ? colors.primary : colors.cardBackground,
-                            borderColor: colors.border,
-                        },
-                        isUser && styles.userMessageBubble,
-                    ]}
-                >
-                    <Text style={[styles.messageText, { color: isUser ? '#fff' : colors.text }]}>
-                        {item.text}
-                    </Text>
-                    <Text style={[styles.messageTime, { color: isUser ? 'rgba(255,255,255,0.7)' : colors.tertiaryText }]}>
-                        {item.timestamp}
-                    </Text>
-                </View>
-            </View>
-        );
+    const handleChatCreated = (newChatId: string) => {
+        // Update params to reflect real ID without pushing new screen if possible
+        router.setParams({ id: newChatId });
+        loadChatDetails();
     };
 
     return (
         <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]} edges={['top', 'left', 'right']}>
-            <KeyboardAvoidingView
-                style={styles.container}
-                behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-                keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
-            >
+            <View style={styles.container}>
                 {/* Header */}
                 <View style={[styles.header, { backgroundColor: colors.background, borderBottomColor: colors.border }]}>
                     <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
@@ -122,11 +61,11 @@ export default function ChatConversationScreen() {
                     </TouchableOpacity>
                     <View style={styles.headerInfo}>
                         <View style={[styles.headerAvatar, { backgroundColor: colors.primary + '20' }]}>
-                            <Text style={styles.headerAvatarText}>🏫</Text>
+                            <Text style={styles.headerAvatarText}>🤖</Text>
                         </View>
                         <View>
-                            <Text style={[styles.headerTitle, { color: colors.text }]}>Campus Support</Text>
-                            <Text style={[styles.headerSubtitle, { color: colors.secondaryText }]}>Online</Text>
+                            <Text style={[styles.headerTitle, { color: colors.text }]}>{chatName}</Text>
+                            <Text style={[styles.headerSubtitle, { color: colors.secondaryText }]}>SU Assistant</Text>
                         </View>
                     </View>
                     <TouchableOpacity style={styles.moreButton}>
@@ -134,42 +73,22 @@ export default function ChatConversationScreen() {
                     </TouchableOpacity>
                 </View>
 
-                {/* Messages */}
-                <FlatList
-                    ref={flatListRef}
-                    data={messages}
-                    renderItem={renderMessage}
-                    keyExtractor={(item) => item.id}
-                    contentContainerStyle={styles.messagesList}
-                    showsVerticalScrollIndicator={false}
-                    onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
-                />
-
-                {/* Input */}
-                <View style={[styles.inputContainer, { backgroundColor: colors.background, borderTopColor: colors.border, paddingBottom: Math.max(insets.bottom, 8) }]}>
-                    <View style={[styles.inputWrapper, { backgroundColor: colors.searchBackground }]}>
-                        <TouchableOpacity style={styles.attachButton}>
-                            <Ionicons name="add-circle" size={28} color={colors.primary} />
-                        </TouchableOpacity>
-                        <TextInput
-                            style={[styles.input, { color: colors.text }]}
-                            placeholder="Type a message..."
-                            placeholderTextColor={colors.tertiaryText}
-                            value={inputText}
-                            onChangeText={setInputText}
-                            multiline
-                            maxLength={500}
+                {/* Chat Conversation */}
+                <View style={styles.content}>
+                    {isLoading ? (
+                        <View style={styles.loadingContainer}>
+                            <ActivityIndicator size="large" color={colors.primary} />
+                        </View>
+                    ) : (
+                        <ChatConversation
+                            chatId={id || 'new'}
+                            chatName={chatName}
+                            onMessagesUpdate={loadChatDetails} // Refresh name if it changes
+                            onChatCreated={handleChatCreated}
                         />
-                        <TouchableOpacity
-                            style={[styles.sendButton, { backgroundColor: inputText.trim() ? colors.primary : colors.border }]}
-                            onPress={handleSend}
-                            disabled={!inputText.trim()}
-                        >
-                            <Ionicons name="send" size={20} color="#fff" />
-                        </TouchableOpacity>
-                    </View>
+                    )}
                 </View>
-            </KeyboardAvoidingView>
+            </View>
         </SafeAreaView>
     );
 }
@@ -187,6 +106,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingVertical: 12,
         borderBottomWidth: 1,
+        height: 60,
     },
     backButton: {
         marginRight: 8,
@@ -197,85 +117,33 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     headerAvatar: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 12,
-    },
-    headerAvatarText: {
-        fontSize: 20,
-    },
-    headerTitle: {
-        fontSize: 17,
-        fontWeight: '600',
-    },
-    headerSubtitle: {
-        fontSize: 13,
-        marginTop: 2,
-    },
-    moreButton: {
-        padding: 4,
-    },
-    messagesList: {
-        paddingHorizontal: 16,
-        paddingVertical: 16,
-    },
-    messageContainer: {
-        marginBottom: 12,
-        alignItems: 'flex-start',
-    },
-    userMessageContainer: {
-        alignItems: 'flex-end',
-    },
-    messageBubble: {
-        maxWidth: '75%',
-        paddingHorizontal: 16,
-        paddingVertical: 10,
-        borderRadius: 20,
-        borderWidth: 1,
-    },
-    userMessageBubble: {
-        borderTopRightRadius: 4,
-    },
-    messageText: {
-        fontSize: 16,
-        lineHeight: 22,
-    },
-    messageTime: {
-        fontSize: 11,
-        marginTop: 4,
-    },
-    inputContainer: {
-        borderTopWidth: 1,
-        paddingHorizontal: 16,
-        paddingTop: 12,
-    },
-    inputWrapper: {
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        borderRadius: 24,
-        paddingHorizontal: 8,
-        paddingVertical: 8,
-    },
-    attachButton: {
-        marginBottom: 4,
-    },
-    input: {
-        flex: 1,
-        fontSize: 16,
-        maxHeight: 100,
-        paddingHorizontal: 12,
-        paddingTop: 8,
-    },
-    sendButton: {
         width: 36,
         height: 36,
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: 8,
-        marginBottom: 4,
+        marginRight: 12,
+    },
+    headerAvatarText: {
+        fontSize: 18,
+    },
+    headerTitle: {
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    headerSubtitle: {
+        fontSize: 12,
+        marginTop: 1,
+    },
+    moreButton: {
+        padding: 4,
+    },
+    content: {
+        flex: 1,
+    },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });

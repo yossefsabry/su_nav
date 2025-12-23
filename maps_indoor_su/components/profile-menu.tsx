@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import { useAuth } from '@/contexts/auth-context';
 import { useTheme } from '@/contexts/theme-context';
 
 interface ProfileMenuProps {
@@ -10,6 +11,7 @@ interface ProfileMenuProps {
 
 export function ProfileMenu({ onClose }: ProfileMenuProps) {
     const { colors, theme, toggleTheme } = useTheme();
+    const { signOut, user } = useAuth();
     const animValue = React.useRef(new Animated.Value(0)).current;
     // Animation for theme icon rotation
     const rotateAnim = React.useRef(new Animated.Value(0)).current;
@@ -127,8 +129,8 @@ export function ProfileMenu({ onClose }: ProfileMenuProps) {
                             <Text style={styles.profileAvatarText}>JP</Text>
                         </View>
                         <View style={styles.profileInfo}>
-                            <Text style={[styles.profileName, { color: colors.text }]}>John Player</Text>
-                            <Text style={[styles.profileEmail, { color: colors.secondaryText }]}>john.player@edu</Text>
+                            <Text style={[styles.profileName, { color: colors.text }]}>{user?.name || 'Student'}</Text>
+                            <Text style={[styles.profileEmail, { color: colors.secondaryText }]}>{user?.email || 'student@su.edu.eg'}</Text>
                         </View>
                     </View>
 
@@ -178,7 +180,7 @@ export function ProfileMenu({ onClose }: ProfileMenuProps) {
                         style={styles.logoutItem}
                         onPress={() => {
                             closeMenu();
-                            // Logout logic here
+                            signOut();
                         }}
                         activeOpacity={0.7}
                     >

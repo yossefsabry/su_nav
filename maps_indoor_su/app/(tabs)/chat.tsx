@@ -11,7 +11,8 @@ import {
     StatusBar,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import ChatList, { ChatPreview } from '@/components/chat/ChatList';
+import ChatList from '@/components/chat/ChatList';
+import { Chat } from '@/services/chat-storage';
 import ChatConversation from '@/components/chat/ChatConversation';
 
 export default function ChatScreen() {
@@ -20,14 +21,14 @@ export default function ChatScreen() {
 
     // State
     const [isHistoryVisible, setIsHistoryVisible] = useState(false);
-    const [selectedChat, setSelectedChat] = useState<ChatPreview | null>(null);
+    const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
 
     // Default to a focused state if no chat selected, or show a "New Chat" state
     // For this demo, we'll start with a "New Chat" empty state or a default mock
     // If selectedChat is null, we can show a welcome screen or a default conversation
     // Let's assume null means "New Chat" / "AI Assistant" default
 
-    const handleSelectChat = (chat: ChatPreview) => {
+    const handleSelectChat = (chat: Chat) => {
         setSelectedChat(chat);
         setIsHistoryVisible(false);
     };
@@ -59,7 +60,7 @@ export default function ChatScreen() {
 
                     <View style={styles.headerTitleContainer}>
                         <Text style={[styles.headerTitle, { color: colors.text }]}>
-                            {selectedChat ? selectedChat.name : 'AI Assistant'}
+                            {selectedChat ? selectedChat.name : 'SU Assistant'}
                         </Text>
                         {selectedChat && (
                             <Text style={[styles.headerSubtitle, { color: colors.secondaryText }]}>
@@ -80,7 +81,15 @@ export default function ChatScreen() {
                 <View style={styles.content}>
                     <ChatConversation
                         chatId={selectedChat ? selectedChat.id : 'new'}
-                        chatName={selectedChat ? selectedChat.name : 'AI Assistant'}
+                        chatName={selectedChat ? selectedChat.name : 'SU Assistant'}
+                        onChatCreated={async (newChatId) => {
+                            // Fetch the new chat details to update the selectedChat state
+                            const { chatStorage } = require('@/services/chat-storage');
+                            const newChat = await chatStorage.getChatById(newChatId);
+                            if (newChat) {
+                                setSelectedChat(newChat);
+                            }
+                        }}
                     />
                 </View>
 

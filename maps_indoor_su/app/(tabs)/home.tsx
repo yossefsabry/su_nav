@@ -27,6 +27,8 @@ import { scheduleStorage } from '@/services/schedule-storage';
 import { ScheduleItem } from '@/types/schedule';
 import { getUpcomingScheduleItems } from '@/utils/schedule-utils';
 import { UpcomingSchedule } from '@/components/upcoming-schedule';
+import { AttendanceChart } from '@/components/dashboard/AttendanceChart';
+import { PresenceCard } from '@/components/dashboard/PresenceCard';
 
 const { width } = Dimensions.get('window');
 
@@ -41,6 +43,12 @@ export default function HomeScreen() {
   const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>([]);
   const pulseAnim = React.useRef(new Animated.Value(1)).current;
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
+
+  // Mock data for attendance
+  const attendanceStats = {
+    total: 24,
+    attended: 20
+  };
 
   const locationPoints = getLocationPoints();
 
@@ -88,12 +96,6 @@ export default function HomeScreen() {
     loadSchedule();
   }, []);
 
-  // Debug upcoming schedule
-  React.useEffect(() => {
-    console.log('Schedule items changed:', scheduleItems);
-    console.log('Upcoming schedule:', upcomingSchedule);
-  }, [scheduleItems, upcomingSchedule]);
-
   // Smooth loading animation
   React.useEffect(() => {
     // Immediate load - no artificial delay
@@ -104,19 +106,6 @@ export default function HomeScreen() {
       useNativeDriver: true,
     }).start();
   }, []);
-
-  const handleThemeToggle = () => {
-    const themes: Array<'light' | 'dark' | 'system'> = ['light', 'dark', 'system'];
-    const currentIndex = themes.indexOf(theme);
-    const nextIndex = (currentIndex + 1) % themes.length;
-    setTheme(themes[nextIndex]);
-  };
-
-  const getThemeIcon = () => {
-    if (theme === 'light') return 'sunny';
-    if (theme === 'dark') return 'moon';
-    return 'contrast';
-  };
 
   const handleLocationPress = (location: LocationPoint) => {
     router.push({
@@ -389,27 +378,21 @@ export default function HomeScreen() {
             )}
           </View>
 
-          {/* Status Card */}
-          {userLocation && (
-            <View style={[styles.statusCard, { backgroundColor: colors.cardBackground }]}>
-              <View style={styles.statusHeader}>
-                <View style={[styles.statusIconContainer, { backgroundColor: colors.success + '15' }]}>
-                  <Animated.View style={{ transform: [{ scale: pulseAnim }] }}>
-                    <Ionicons name="radio-button-on" size={16} color={colors.success} />
-                  </Animated.View>
-                </View>
-                <View style={styles.statusTextContainer}>
-                  <Text style={[styles.statusTitle, { color: colors.text }]}>Location Active</Text>
-                  <Text style={[styles.statusSubtitle, { color: colors.secondaryText }]}>
-                    {userLocation.latitude.toFixed(4)}, {userLocation.longitude.toFixed(4)}
-                  </Text>
-                </View>
-                <TouchableOpacity onPress={refreshLocation}>
-                  <Ionicons name="refresh" size={22} color={colors.primary} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          )}
+          {/* New Dashboard Section */}
+          <TouchableOpacity
+            style={styles.dashboardSection}
+            activeOpacity={0.9}
+            onPress={() => router.push('/dashboard')}
+          >
+            <PresenceCard
+              isOnCampus={!!userLocation}
+              locationName={userLocation ? 'Sinai University' : 'Off Campus'}
+            />
+            <AttendanceChart
+              totalLectures={attendanceStats.total}
+              attendedLectures={attendanceStats.attended}
+            />
+          </TouchableOpacity>
 
           {/* Quick Actions */}
           <View style={styles.section}>
@@ -597,6 +580,9 @@ const styles = StyleSheet.create({
   noResultsText: {
     fontSize: 16,
     marginTop: 12,
+  },
+  dashboardSection: {
+    marginTop: 20,
   },
   statusCard: {
     marginHorizontal: 20,
