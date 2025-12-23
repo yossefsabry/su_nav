@@ -22,6 +22,11 @@ import {
   type EdgeInsets,
 } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { ProfileMenu } from '@/components/profile-menu';
+import { scheduleStorage } from '@/services/schedule-storage';
+import { ScheduleItem } from '@/types/schedule';
+import { getUpcomingScheduleItems } from '@/utils/schedule-utils';
+import { UpcomingSchedule } from '@/components/upcoming-schedule';
 
 const { width } = Dimensions.get('window');
 
@@ -32,6 +37,8 @@ export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>([]);
   const pulseAnim = React.useRef(new Animated.Value(1)).current;
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
 
@@ -43,6 +50,10 @@ export default function HomeScreen() {
       location.label.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }, [searchQuery, locationPoints]);
+
+  const upcomingSchedule = useMemo(() => {
+    return getUpcomingScheduleItems(scheduleItems, 4);
+  }, [scheduleItems]);
 
   React.useEffect(() => {
     const pulse = Animated.loop(
@@ -62,6 +73,26 @@ export default function HomeScreen() {
     pulse.start();
     return () => pulse.stop();
   }, []);
+
+  // Load schedule data
+  React.useEffect(() => {
+    const loadSchedule = async () => {
+      try {
+        const items = await scheduleStorage.getAll();
+        console.log('Loaded schedule items:', items);
+        setScheduleItems(items);
+      } catch (error) {
+        console.error('Error loading schedule:', error);
+      }
+    };
+    loadSchedule();
+  }, []);
+
+  // Debug upcoming schedule
+  React.useEffect(() => {
+    console.log('Schedule items changed:', scheduleItems);
+    console.log('Upcoming schedule:', upcomingSchedule);
+  }, [scheduleItems, upcomingSchedule]);
 
   // Smooth loading animation
   React.useEffect(() => {
@@ -136,7 +167,7 @@ export default function HomeScreen() {
     },
   ];
 
-  const renderQuickAction = ({ item }: { item: typeof quickActions[0] }) => (
+  const renderQuickAction = React.useCallback(({ item }: { item: typeof quickActions[0] }) => (
     <TouchableOpacity
       style={[styles.quickActionCard, { backgroundColor: colors.cardBackground }]}
       onPress={item.onPress}
@@ -154,9 +185,9 @@ export default function HomeScreen() {
         {item.title}
       </Text>
     </TouchableOpacity>
-  );
+  ), [colors]);
 
-  const renderLocationItem = ({ item }: { item: LocationPoint }) => (
+  const renderLocationItem = React.useCallback(({ item }: { item: LocationPoint }) => (
     <TouchableOpacity
       style={[styles.locationItem, { backgroundColor: colors.cardBackground, borderColor: colors.border }]}
       onPress={() => handleLocationPress(item)}
@@ -175,7 +206,7 @@ export default function HomeScreen() {
       </View>
       <Ionicons name="chevron-forward" size={20} color={colors.tertiaryText} />
     </TouchableOpacity>
-  );
+  ), [colors, handleLocationPress]);
 
   // Loading Skeleton Component
   const LoadingSkeleton = ({ insets }: { insets: EdgeInsets }) => {
@@ -280,182 +311,192 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]} edges={['top', 'left', 'right']}>
       <Animated.View style={[styles.container, { backgroundColor: colors.background, opacity: fadeAnim }]}>
-      {/* Header */}
-      <View
-        style={[
-          styles.header,
-          {
-            backgroundColor: colors.background,
-            borderBottomColor: colors.border,
-            paddingTop: Math.max(16, 40 - insets.top),
-          },
-        ]}
-      >
-        <View>
-          <Text style={[styles.greeting, { color: colors.secondaryText }]}>Welcome back</Text>
-          <Text style={[styles.title, { color: colors.text }]}>InGuide</Text>
-        </View>
-        <TouchableOpacity
-          style={[styles.themeButton, { backgroundColor: colors.secondaryBackground }]}
-          onPress={handleThemeToggle}
-        >
-          <Ionicons name={getThemeIcon() as any} size={22} color={colors.text} />
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + 100 }]}
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
-      >
-        {/* Search Bar */}
-        <View style={styles.searchSection}>
-          <View style={[
-            styles.searchContainer,
+        {/* Header */}
+        <View
+          style={[
+            styles.header,
             {
-              backgroundColor: colors.searchBackground,
-              borderColor: isSearchFocused ? colors.primary : colors.border,
-              borderWidth: isSearchFocused ? 2 : 1,
-            }
-          ]}>
-            <Ionicons name="search" size={20} color={colors.secondaryText} />
-            <TextInput
-              style={[styles.searchInput, { color: colors.text }]}
-              placeholder="Search locations..."
-              placeholderTextColor={colors.tertiaryText}
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-              onFocus={() => setIsSearchFocused(true)}
-              onBlur={() => setIsSearchFocused(false)}
-            />
-            {searchQuery.length > 0 && (
-              <TouchableOpacity onPress={() => setSearchQuery('')}>
-                <Ionicons name="close-circle" size={20} color={colors.tertiaryText} />
-              </TouchableOpacity>
+              backgroundColor: colors.background,
+              borderBottomColor: colors.border,
+              paddingTop: Math.max(16, 40 - insets.top),
+            },
+          ]}
+        >
+          <View>
+            <Text style={[styles.greeting, { color: colors.secondaryText }]}>Welcome back</Text>
+            <Text style={[styles.title, { color: colors.text }]}>InGuide</Text>
+          </View>
+          <TouchableOpacity
+            style={[styles.profileButton, { backgroundColor: colors.primary }]}
+            onPress={() => setShowProfileMenu(true)}
+          >
+            <Text style={styles.profileButtonText}>JP</Text>
+          </TouchableOpacity>
+        </View>
+
+        <ScrollView
+          style={styles.scrollView}
+          contentContainerStyle={[styles.scrollContent, { paddingBottom: 120 }]}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+        >
+          {/* Search Bar */}
+          <View style={styles.searchSection}>
+            <View style={[
+              styles.searchContainer,
+              {
+                backgroundColor: colors.searchBackground,
+                borderColor: isSearchFocused ? colors.primary : colors.border,
+                borderWidth: isSearchFocused ? 2 : 1,
+              }
+            ]}>
+              <Ionicons name="search" size={20} color={colors.secondaryText} />
+              <TextInput
+                style={[styles.searchInput, { color: colors.text }]}
+                placeholder="Search locations..."
+                placeholderTextColor={colors.tertiaryText}
+                value={searchQuery}
+                onChangeText={setSearchQuery}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setIsSearchFocused(false)}
+              />
+              {searchQuery.length > 0 && (
+                <TouchableOpacity onPress={() => setSearchQuery('')}>
+                  <Ionicons name="close-circle" size={20} color={colors.tertiaryText} />
+                </TouchableOpacity>
+              )}
+            </View>
+
+            {/* Search Results */}
+            {searchQuery.trim() && (
+              <View style={[styles.searchResults, { backgroundColor: colors.cardBackground, borderColor: colors.border }]}>
+                {filteredLocations.length > 0 ? (
+                  <FlatList
+                    data={filteredLocations}
+                    renderItem={renderLocationItem}
+                    keyExtractor={(item) => item.id.toString()}
+                    scrollEnabled={false}
+                  />
+                ) : (
+                  <View style={styles.noResults}>
+                    <Ionicons name="search-outline" size={40} color={colors.tertiaryText} />
+                    <Text style={[styles.noResultsText, { color: colors.secondaryText }]}>
+                      No locations found
+                    </Text>
+                  </View>
+                )}
+              </View>
             )}
           </View>
 
-          {/* Search Results */}
-          {searchQuery.trim() && (
-            <View style={[styles.searchResults, { backgroundColor: colors.cardBackground, borderColor: colors.border }]}>
-              {filteredLocations.length > 0 ? (
-                <FlatList
-                  data={filteredLocations}
-                  renderItem={renderLocationItem}
-                  keyExtractor={(item) => item.id.toString()}
-                  scrollEnabled={false}
-                />
-              ) : (
-                <View style={styles.noResults}>
-                  <Ionicons name="search-outline" size={40} color={colors.tertiaryText} />
-                  <Text style={[styles.noResultsText, { color: colors.secondaryText }]}>
-                    No locations found
+          {/* Status Card */}
+          {userLocation && (
+            <View style={[styles.statusCard, { backgroundColor: colors.cardBackground }]}>
+              <View style={styles.statusHeader}>
+                <View style={[styles.statusIconContainer, { backgroundColor: colors.success + '15' }]}>
+                  <Animated.View style={{ transform: [{ scale: pulseAnim }] }}>
+                    <Ionicons name="radio-button-on" size={16} color={colors.success} />
+                  </Animated.View>
+                </View>
+                <View style={styles.statusTextContainer}>
+                  <Text style={[styles.statusTitle, { color: colors.text }]}>Location Active</Text>
+                  <Text style={[styles.statusSubtitle, { color: colors.secondaryText }]}>
+                    {userLocation.latitude.toFixed(4)}, {userLocation.longitude.toFixed(4)}
                   </Text>
                 </View>
-              )}
+                <TouchableOpacity onPress={refreshLocation}>
+                  <Ionicons name="refresh" size={22} color={colors.primary} />
+                </TouchableOpacity>
+              </View>
             </View>
           )}
-        </View>
 
-        {/* Status Card */}
-        {userLocation && (
-          <View style={[styles.statusCard, { backgroundColor: colors.cardBackground }]}>
-            <View style={styles.statusHeader}>
-              <View style={[styles.statusIconContainer, { backgroundColor: colors.success + '15' }]}>
-                <Animated.View style={{ transform: [{ scale: pulseAnim }] }}>
-                  <Ionicons name="radio-button-on" size={16} color={colors.success} />
-                </Animated.View>
-              </View>
-              <View style={styles.statusTextContainer}>
-                <Text style={[styles.statusTitle, { color: colors.text }]}>Location Active</Text>
-                <Text style={[styles.statusSubtitle, { color: colors.secondaryText }]}>
-                  {userLocation.latitude.toFixed(4)}, {userLocation.longitude.toFixed(4)}
-                </Text>
-              </View>
-              <TouchableOpacity onPress={refreshLocation}>
-                <Ionicons name="refresh" size={22} color={colors.primary} />
+          {/* Quick Actions */}
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: colors.text }]}>Quick Actions</Text>
+            <FlatList
+              data={quickActions}
+              renderItem={renderQuickAction}
+              keyExtractor={(item) => item.id.toString()}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.quickActionsContainer}
+            />
+          </View>
+
+          {/* Upcoming Schedule */}
+          {upcomingSchedule.length > 0 && (
+            <UpcomingSchedule items={upcomingSchedule} />
+          )}
+
+          {/* Popular Locations */}
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={[styles.sectionTitle, { color: colors.text }]}>Popular Locations</Text>
+              <TouchableOpacity onPress={() => router.push('/(tabs)/map')}>
+                <Text style={[styles.seeAllText, { color: colors.primary }]}>See All</Text>
               </TouchableOpacity>
             </View>
+            {locationPoints.slice(0, 5).map((location) => (
+              <TouchableOpacity
+                key={location.id}
+                style={[styles.popularLocationCard, { backgroundColor: colors.cardBackground, borderColor: colors.border }]}
+                onPress={() => handleLocationPress(location)}
+                activeOpacity={0.7}
+              >
+                <View style={[styles.popularLocationIcon, { backgroundColor: colors.primary + '15' }]}>
+                  <Ionicons name="location" size={20} color={colors.primary} />
+                </View>
+                <Text style={[styles.popularLocationText, { color: colors.text }]} numberOfLines={1}>
+                  {location.label}
+                </Text>
+                <Ionicons name="chevron-forward" size={18} color={colors.tertiaryText} />
+              </TouchableOpacity>
+            ))}
           </View>
-        )}
 
-        {/* Quick Actions */}
-        <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: colors.text }]}>Quick Actions</Text>
-          <FlatList
-            data={quickActions}
-            renderItem={renderQuickAction}
-            keyExtractor={(item) => item.id.toString()}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.quickActionsContainer}
-          />
-        </View>
-
-        {/* Popular Locations */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={[styles.sectionTitle, { color: colors.text }]}>Popular Locations</Text>
-            <TouchableOpacity onPress={() => router.push('/(tabs)/map')}>
-              <Text style={[styles.seeAllText, { color: colors.primary }]}>See All</Text>
-            </TouchableOpacity>
-          </View>
-          {locationPoints.slice(0, 5).map((location) => (
-            <TouchableOpacity
-              key={location.id}
-              style={[styles.popularLocationCard, { backgroundColor: colors.cardBackground, borderColor: colors.border }]}
-              onPress={() => handleLocationPress(location)}
-              activeOpacity={0.7}
-            >
-              <View style={[styles.popularLocationIcon, { backgroundColor: colors.primary + '15' }]}>
-                <Ionicons name="location" size={20} color={colors.primary} />
+          {/* Features */}
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: colors.text }]}>Features</Text>
+            <View style={[styles.featureCard, { backgroundColor: colors.cardBackground }]}>
+              <View style={styles.featureItem}>
+                <Ionicons name="navigate" size={24} color={colors.primary} />
+                <View style={styles.featureTextContainer}>
+                  <Text style={[styles.featureTitle, { color: colors.text }]}>Turn-by-Turn Navigation</Text>
+                  <Text style={[styles.featureDescription, { color: colors.secondaryText }]}>
+                    Get directions to any location
+                  </Text>
+                </View>
               </View>
-              <Text style={[styles.popularLocationText, { color: colors.text }]} numberOfLines={1}>
-                {location.label}
-              </Text>
-              <Ionicons name="chevron-forward" size={18} color={colors.tertiaryText} />
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        {/* Features */}
-        <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: colors.text }]}>Features</Text>
-          <View style={[styles.featureCard, { backgroundColor: colors.cardBackground }]}>
-            <View style={styles.featureItem}>
-              <Ionicons name="navigate" size={24} color={colors.primary} />
-              <View style={styles.featureTextContainer}>
-                <Text style={[styles.featureTitle, { color: colors.text }]}>Turn-by-Turn Navigation</Text>
-                <Text style={[styles.featureDescription, { color: colors.secondaryText }]}>
-                  Get directions to any location
-                </Text>
+              <View style={[styles.featureDivider, { backgroundColor: colors.border }]} />
+              <View style={styles.featureItem}>
+                <Ionicons name="scan" size={24} color={colors.secondary} />
+                <View style={styles.featureTextContainer}>
+                  <Text style={[styles.featureTitle, { color: colors.text }]}>AR Camera View</Text>
+                  <Text style={[styles.featureDescription, { color: colors.secondaryText }]}>
+                    Use augmented reality for navigation
+                  </Text>
+                </View>
               </View>
-            </View>
-            <View style={[styles.featureDivider, { backgroundColor: colors.border }]} />
-            <View style={styles.featureItem}>
-              <Ionicons name="scan" size={24} color={colors.secondary} />
-              <View style={styles.featureTextContainer}>
-                <Text style={[styles.featureTitle, { color: colors.text }]}>AR Camera View</Text>
-                <Text style={[styles.featureDescription, { color: colors.secondaryText }]}>
-                  Use augmented reality for navigation
-                </Text>
-              </View>
-            </View>
-            <View style={[styles.featureDivider, { backgroundColor: colors.border }]} />
-            <View style={styles.featureItem}>
-              <Ionicons name="calendar" size={24} color={colors.success} />
-              <View style={styles.featureTextContainer}>
-                <Text style={[styles.featureTitle, { color: colors.text }]}>Schedule Manager</Text>
-                <Text style={[styles.featureDescription, { color: colors.secondaryText }]}>
-                  Manage your classes and labs
-                </Text>
+              <View style={[styles.featureDivider, { backgroundColor: colors.border }]} />
+              <View style={styles.featureItem}>
+                <Ionicons name="calendar" size={24} color={colors.success} />
+                <View style={styles.featureTextContainer}>
+                  <Text style={[styles.featureTitle, { color: colors.text }]}>Schedule Manager</Text>
+                  <Text style={[styles.featureDescription, { color: colors.secondaryText }]}>
+                    Manage your classes and labs
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
       </Animated.View>
+
+      {/* Profile Menu */}
+      {showProfileMenu && (
+        <ProfileMenu onClose={() => setShowProfileMenu(false)} />
+      )}
     </SafeAreaView>
   );
 }
@@ -483,12 +524,17 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
   },
-  themeButton: {
+  profileButton: {
     width: 44,
     height: 44,
     borderRadius: 22,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  profileButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
   },
   scrollView: {
     flex: 1,

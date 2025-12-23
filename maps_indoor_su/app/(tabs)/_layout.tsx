@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@/contexts/theme-context';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -19,13 +19,17 @@ export default function TabLayout() {
           backgroundColor: colors.background,
           borderTopColor: colors.border,
           borderTopWidth: 1,
-          height: (Platform.OS === 'ios' ? 60 : 55) + insets.bottom,
-          paddingBottom: Math.max(insets.bottom, Platform.OS === 'ios' ? 8 : 10),
-          paddingTop: 10,
-          paddingLeft: insets.left,
-          paddingRight: insets.right,
+          height: Platform.OS === 'ios' ? 85 : 60 + Math.max(insets.bottom, 10),
+          paddingBottom: Platform.OS === 'ios' ? insets.bottom || 20 : Math.max(insets.bottom, 10),
+          paddingTop: 8,
+          paddingLeft: Math.max(insets.left, 0),
+          paddingRight: Math.max(insets.right, 0),
           elevation: 0,
           shadowOpacity: 0,
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
         },
         tabBarLabelStyle: {
           fontSize: 12,
@@ -46,10 +50,10 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons 
-              name={focused ? "home" : "home-outline"} 
-              size={26} 
-              color={color} 
+            <Ionicons
+              name={focused ? "home" : "home-outline"}
+              size={26}
+              color={color}
             />
           ),
         }}
@@ -59,10 +63,10 @@ export default function TabLayout() {
         options={{
           title: 'Map',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons 
-              name={focused ? "map" : "map-outline"} 
-              size={26} 
-              color={color} 
+            <Ionicons
+              name={focused ? "map" : "map-outline"}
+              size={26}
+              color={color}
             />
           ),
         }}
@@ -72,14 +76,28 @@ export default function TabLayout() {
         options={{
           title: 'Schedule',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons 
-              name={focused ? "calendar" : "calendar-outline"} 
-              size={26} 
-              color={color} 
+            <Ionicons
+              name={focused ? "calendar" : "calendar-outline"}
+              size={26}
+              color={color}
             />
           ),
         }}
       />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Chat',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "chatbubbles" : "chatbubbles-outline"}
+              size={26}
+              color={color}
+            />
+          ),
+        }}
+      />
+
       <Tabs.Screen
         name="explore"
         options={{

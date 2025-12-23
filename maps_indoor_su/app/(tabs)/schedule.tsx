@@ -175,7 +175,7 @@ export default function ScheduleScreen() {
         style={[styles.container, { backgroundColor: colors.background, opacity: fadeAnim }]}
       >
         <StatusBar barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'} />
-        
+
         {/* Header */}
         <View
           style={[
@@ -308,7 +308,7 @@ export default function ScheduleScreen() {
             <View style={styles.emptyState}>
               <Ionicons name="calendar-outline" size={80} color={colors.border} />
               <Text style={[styles.emptyStateTitle, { color: colors.tertiaryText }]}>No Schedule Yet</Text>
-              <Text style={[styles.emptyStateText, { color: colors.tertiaryText }]}> 
+              <Text style={[styles.emptyStateText, { color: colors.tertiaryText }]}>
                 Tap the + button to add your first class or lab
               </Text>
             </View>
@@ -317,7 +317,7 @@ export default function ScheduleScreen() {
 
         {/* Floating Action Button */}
         <TouchableOpacity
-          style={[styles.fab, { backgroundColor: colors.primary, bottom: insets.bottom + 20 }]}
+          style={[styles.fab, { backgroundColor: colors.primary, bottom: insets.bottom + 90 }]}
           onPress={handleAddNew}
         >
           <Ionicons name="add" size={32} color="#fff" />
