@@ -1,3 +1,7 @@
 node_modules
 node_modules/
 */node_modules
+android
+ios
+./maps_indoor_su/android
+./maps_indoor_su/ios
